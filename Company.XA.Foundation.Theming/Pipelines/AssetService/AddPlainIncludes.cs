@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sitecore;
 using Sitecore.Data.Fields;
@@ -22,6 +23,7 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
             const int num = 0;
 
             var plainIncludeItems = contextItem.Axes.SelectItems("/sitecore/media library//*[@@templateid='{0}']".FormatWith(Templates.PlainInclude.Id));
+            if (!plainIncludeItems.Any()) return;
 
             foreach (var plainIncludeItem in plainIncludeItems)
             {
@@ -39,9 +41,16 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
 
                 var assetType = (AssetType)Enum.Parse(typeof(AssetType), mode);
 
+                var attributes = new Dictionary<string, string>
+                {
+                    {"integrity", plainIncludeItem[Templates.PlainInclude.Fields.SriHash]},
+                    {"crossorigin", GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors])}
+                };
+
                 var url = plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl];
-                var hash = plainIncludeItem[Templates.PlainInclude.Fields.SriHash];
-                var cors = GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors]);
+
+                var joinedAttributes = string.Join(" ", attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
+
                 var content = string.Empty;
 
                 switch (assetType)
@@ -49,7 +58,7 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                     case AssetType.Script:
                         if (!string.IsNullOrEmpty(plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl]))
                         {
-                            content += "<script src=\"{0}\" integrity=\"{1}\" crossorigin=\"{2}\"></script>".FormatWith(url, hash, cors);
+                            content += "<script src=\"{0}\" {1}></script>".FormatWith(url, joinedAttributes);
                         }
 
                         if (!string.IsNullOrEmpty(plainIncludeItem[Templates.PlainInclude.Fields.RawContent]))
@@ -60,7 +69,7 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                     case AssetType.Style:
                         if (!string.IsNullOrEmpty(plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl]))
                         {
-                            content += "<link href=\"{0}\" rel=\"stylesheet\" integrity=\"{1}\" crossorigin=\"{2}\" </>".FormatWith(url, hash, cors);
+                            content += "<link href=\"{0}\" rel=\"stylesheet\" {1} />".FormatWith(url, joinedAttributes);
                         }
 
                         if (!string.IsNullOrEmpty(plainIncludeItem[Templates.PlainInclude.Fields.RawContent]))
