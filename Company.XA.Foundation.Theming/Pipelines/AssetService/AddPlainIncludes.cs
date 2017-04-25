@@ -73,15 +73,15 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                 if (!isFallbackEnabled) continue;
 
                 var fallbackTest = plainIncludeItem[Templates.PlainInclude.Fields.FallbackTest];
-                if(string.IsNullOrEmpty(fallbackTest)) continue;
+                if (string.IsNullOrEmpty(fallbackTest)) continue;
 
                 var tagBuilder = new StringBuilder();
-                foreach (var script in QueryAssets(plainIncludeItem, AssetType.Script).Where(i => i.TemplateID != Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID).Select(s => "<script src=\"{0}\">\\x3C/script>".FormatWith(s.BuildAssetPath(AssetServiceMode.Disabled != assetConfiguration.ScriptsMode))))
+                foreach (var script in ProcessAssets(plainIncludeItem, AssetType.Script, assetConfiguration.ScriptsMode))
                 {
                     tagBuilder.Append(script);
                 }
 
-                foreach (var link in QueryAssets(plainIncludeItem, AssetType.Style).Where(i => i.TemplateID != Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID).Select(s => "<link href=\"{0}\" rel=\"stylesheet\" />".FormatWith(s.BuildAssetPath(AssetServiceMode.Disabled != assetConfiguration.StylesMode))))
+                foreach (var link in ProcessAssets(plainIncludeItem, AssetType.Style, assetConfiguration.StylesMode))
                 {
                     tagBuilder.Append(link);
                 }
@@ -97,10 +97,12 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                     };
                     assetsList.Add(fallbackInclude);
                 }
+
+                //TODO: Add raw content after fallback.
             }
         }
 
-        private List<Item> QueryAssets(Item plainIncludeItem, AssetType assetType)
+        private IEnumerable<string> ProcessAssets(Item plainIncludeItem, AssetType assetType, AssetServiceMode serviceMode)
         {
             Item[] selectedItems = null;
             if (assetType == AssetType.Script)
@@ -112,7 +114,29 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                 selectedItems = plainIncludeItem.Axes.SelectItems("./Styles//*[@Extension='css']");
             }
 
-            return (selectedItems != null && selectedItems.Any()) ? new List<Item>(selectedItems) : new List<Item>();
+            var assets = (selectedItems != null && selectedItems.Any()) ? new List<Item>(selectedItems) : new List<Item>();
+
+            switch (serviceMode)
+            {
+                case AssetServiceMode.Disabled:
+                    assets = assets.Where(i => i.TemplateID != Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID).ToList();
+                    break;
+            }
+
+            switch (assetType)
+            {
+                case AssetType.Script:
+                    return assets.Select(s => "<script src=\"{0}\">\\x3C/script>".FormatWith(s.BuildAssetPath(AssetServiceMode.Disabled != serviceMode)));
+                case AssetType.Style:
+                    return
+                        assets.Select(
+                            s =>
+                                "<link href=\"{0}\" rel=\"stylesheet\" />".FormatWith(
+                                    s.BuildAssetPath(AssetServiceMode.Disabled != serviceMode)));
+                default:
+                    return new List<string>();
+            }
+
         }
 
         private static string GetContent(AssetType assetType, string url, string rawContent, string joinedAttributes)
