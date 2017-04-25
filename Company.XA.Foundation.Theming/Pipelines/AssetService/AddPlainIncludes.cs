@@ -7,6 +7,7 @@ using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.StringExtensions;
 using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
+using Sitecore.XA.Foundation.Theming.Bundler;
 using Sitecore.XA.Foundation.Theming.Configuration;
 using Sitecore.XA.Foundation.Theming.Pipelines.AssetService;
 
@@ -115,28 +116,52 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
             }
 
             var assets = (selectedItems != null && selectedItems.Any()) ? new List<Item>(selectedItems) : new List<Item>();
-
+            var isOptimized = true;
             switch (serviceMode)
             {
                 case AssetServiceMode.Disabled:
                     assets = assets.Where(i => i.TemplateID != Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID).ToList();
+                    isOptimized = false;
+                    break;
+                case AssetServiceMode.Concatenate:
+                case AssetServiceMode.ConcatenateAndMinify:
+                    var optimizedItem = assets.FirstOrDefault(i => i.TemplateID == Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID);
+                    if (optimizedItem != null && !IsNotEmpty(optimizedItem))
+                    {
+                        assets = new List<Item> {optimizedItem};
+                    }
+                    else
+                    {
+                        optimizedItem = new AssetBundler().GetOptimizedItem(plainIncludeItem, (OptimizationType)assetType, serviceMode);
+                        if (optimizedItem != null && IsNotEmpty(optimizedItem))
+                        {
+                            assets = new List<Item> {optimizedItem};
+                        }
+                        else
+                        {
+                            assets = new List<Item>();
+                        }
+                    }
                     break;
             }
 
             switch (assetType)
             {
                 case AssetType.Script:
-                    return assets.Select(s => "<script src=\"{0}\">\\x3C/script>".FormatWith(s.BuildAssetPath(AssetServiceMode.Disabled != serviceMode)));
+                    return assets.Select(s => "<script src=\"{0}\">\\x3C/script>".FormatWith(s.BuildAssetPath(isOptimized)));
                 case AssetType.Style:
                     return
-                        assets.Select(
-                            s =>
-                                "<link href=\"{0}\" rel=\"stylesheet\" />".FormatWith(
-                                    s.BuildAssetPath(AssetServiceMode.Disabled != serviceMode)));
+                        assets.Select(s => "<link href=\"{0}\" rel=\"stylesheet\" />".FormatWith(s.BuildAssetPath(isOptimized)));
                 default:
                     return new List<string>();
             }
 
+        }
+
+        private bool IsNotEmpty(Item optimizedScriptItem)
+        {
+            var mediaStream = ((MediaItem)optimizedScriptItem).GetMediaStream();
+            return mediaStream?.Length > 0L;
         }
 
         private static string GetContent(AssetType assetType, string url, string rawContent, string joinedAttributes)
