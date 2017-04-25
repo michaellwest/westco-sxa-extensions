@@ -16,6 +16,8 @@ namespace Company.XA.Foundation.Theming
                 public static readonly ID Cors = new ID("{76F5998D-1442-4BC4-83B5-57DCDFD279BB}");
                 public static readonly ID RawContent = new ID("{26F1DD9D-104F-4597-AC5A-EA5346C1372D}");
                 public static readonly ID IsGlobalAsset = new ID("{64C5DBCD-1852-4A81-8712-D0386CBF7DBD}");
+                public static readonly ID IsFallbackEnabled = new ID("{C267A878-113D-47A7-88AF-59AD06614FC4}");
+                public static readonly ID FallbackTest = new ID("{82AB3122-D4A5-4EB0-A997-B751CCC56649}");
             }
         }
 

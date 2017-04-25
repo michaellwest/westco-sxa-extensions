@@ -41,6 +41,9 @@
       <HintPath>..\lib\Sitecore.XA.Foundation.IoC.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sitecore.XA.Foundation.SitecoreExtensions">
+      <HintPath>..\lib\Sitecore.XA.Foundation.SitecoreExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.XA.Foundation.Theming">
       <HintPath>..\lib\Sitecore.XA.Foundation.Theming.dll</HintPath>
       <Private>False</Private>
