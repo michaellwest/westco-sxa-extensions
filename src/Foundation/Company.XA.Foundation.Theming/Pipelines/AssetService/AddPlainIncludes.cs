@@ -54,21 +54,20 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                 };
 
                 var url = plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl];
-                var rawContent = plainIncludeItem[Templates.PlainInclude.Fields.RawContent];
                 var joinedAttributes = string.Join(" ", attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
 
-                var content = GetContent(assetType, url, rawContent, joinedAttributes);
+                var urlContent = GetUrlContent(assetType, url, joinedAttributes);
 
-                if (string.IsNullOrEmpty(content)) continue;
+                if (string.IsNullOrEmpty(urlContent)) continue;
 
-                var plainInclude = new PlainInclude
+                var urlInclude = new PlainInclude
                 {
                     SortOrder = num,
                     Name = plainIncludeItem.Name,
                     Type = assetType,
-                    Content = content
+                    Content = urlContent
                 };
-                assetsList.Add(plainInclude);
+                assetsList.Add(urlInclude);
 
                 var isFallbackEnabled = MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsFallbackEnabled], false);
                 if (!isFallbackEnabled) continue;
@@ -99,7 +98,18 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                     assetsList.Add(fallbackInclude);
                 }
 
-                //TODO: Add raw content after fallback.
+                var rawContent = GetRawContent(assetType, plainIncludeItem[Templates.PlainInclude.Fields.RawContent]);
+                if (!string.IsNullOrEmpty(rawContent))
+                {
+                    var rawInclude = new PlainInclude
+                    {
+                        SortOrder = num,
+                        Name = plainIncludeItem.Name,
+                        Type = assetType,
+                        Content = rawContent
+                    };
+                    assetsList.Add(rawInclude);
+                }
             }
         }
 
@@ -164,7 +174,7 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
             return mediaStream?.Length > 0L;
         }
 
-        private static string GetContent(AssetType assetType, string url, string rawContent, string joinedAttributes)
+        private static string GetUrlContent(AssetType assetType, string url, string joinedAttributes)
         {
             var content = string.Empty;
             if (assetType == AssetType.Script)
@@ -173,11 +183,6 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                 {
                     content += "<script src=\"{0}\" {1}></script>".FormatWith(url, joinedAttributes);
                 }
-
-                if (!string.IsNullOrEmpty(rawContent))
-                {
-                    content += "<script>{0}</script>".FormatWith(rawContent);
-                }
             }
             else if (assetType == AssetType.Style)
             {
@@ -185,7 +190,23 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
                 {
                     content += "<link href=\"{0}\" rel=\"stylesheet\" {1} />".FormatWith(url, joinedAttributes);
                 }
+            }
 
+            return content;
+        }
+
+        private static string GetRawContent(AssetType assetType, string rawContent)
+        {
+            var content = string.Empty;
+            if (assetType == AssetType.Script)
+            {
+                if (!string.IsNullOrEmpty(rawContent))
+                {
+                    content += "<script>{0}</script>".FormatWith(rawContent);
+                }
+            }
+            else if (assetType == AssetType.Style)
+            {
                 if (!string.IsNullOrEmpty(rawContent))
                 {
                     content += "<style>{0}</style>".FormatWith(rawContent);
@@ -194,6 +215,7 @@ namespace Company.XA.Foundation.Theming.Pipelines.AssetService
 
             return content;
         }
+
 
         private static string GetEnumFieldValue(LookupField field)
         {

@@ -1,0 +1,14 @@
+﻿---
+ID: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
+Parent: "fe373fc0-cd4d-4287-be67-9c4c9c1e2a07"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Foundation/Company/Theming/Plain Include/Asset
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170422T231151Z
