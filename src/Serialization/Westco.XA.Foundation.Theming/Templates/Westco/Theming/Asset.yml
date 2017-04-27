@@ -2,7 +2,7 @@
 ID: "fe373fc0-cd4d-4287-be67-9c4c9c1e2a07"
 Parent: "e0ab2084-c33a-469f-b0d4-7fdde74140a9"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Foundation/Westco/Theming/Plain Include
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"

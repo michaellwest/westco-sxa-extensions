@@ -1,13 +1,9 @@
 ﻿---
-ID: "02560f00-af3a-4058-89ea-ccb221ca94f7"
+ID: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
 Parent: "fe373fc0-cd4d-4287-be67-9c4c9c1e2a07"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Foundation/Westco/Theming/Plain Include/Fallback
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Asset
 DB: master
-SharedFields:
-- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
-  Hint: __Sortorder
-  Value: 200
 Languages:
 - Language: en
   Versions:
@@ -15,4 +11,4 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170425T013825Z
+      Value: 20170422T231151Z

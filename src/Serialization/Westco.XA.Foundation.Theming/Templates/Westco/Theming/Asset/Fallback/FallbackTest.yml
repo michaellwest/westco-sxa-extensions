@@ -1,8 +1,8 @@
 ﻿---
-ID: "fef3e6d6-18fa-4c01-84af-6533872f89be"
-Parent: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
+ID: "82ab3122-d4a5-4eb0-a997-b751ccc56649"
+Parent: "02560f00-af3a-4058-89ea-ccb221ca94f7"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/Westco/Theming/Plain Include/Asset/AssetUrl
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Fallback/FallbackTest
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
@@ -16,16 +16,16 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Asset Url
+    Value: Fallback test
   - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
     Hint: __Short description
-    Value: Use HTTPS for all asset Urls                                            
+    Value: 
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170422T231151Z
+      Value: 20170425T013826Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

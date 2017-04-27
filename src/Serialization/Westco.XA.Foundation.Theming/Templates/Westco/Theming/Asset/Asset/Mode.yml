@@ -1,13 +1,20 @@
 ﻿---
-ID: "c267a878-113d-47a7-88af-59ad06614fc4"
-Parent: "02560f00-af3a-4058-89ea-ccb221ca94f7"
+ID: "33e4c4ee-ca6b-4d32-8476-2769e0d98925"
+Parent: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/Westco/Theming/Plain Include/Fallback/IsFallbackEnabled
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Asset/Mode
 DB: master
 SharedFields:
+- ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
+  Hint: Source
+  Value: /sitecore/system/Settings/Foundation/Westco/Theming/Enums/Asset Mode
+- ID: "9c903e29-650d-4af2-b9bd-526d5c14a1a5"
+  Hint: Validator Bar
+  Type: tree list
+  Value: "{59D4EE10-627C-4FD3-A964-61A88B092CBC}"
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
-  Value: Checkbox
+  Value: Droplink
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 50
@@ -16,16 +23,13 @@ Languages:
   Fields:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
-    Value: Enable asset fallback
-  - ID: "9541e67d-ce8c-4225-803d-33f7f29f09ef"
-    Hint: __Short description
-    Value: Local assets are ignored when disabled
+    Value: Resource Mode
   Versions:
   - Version: 1
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20170425T014411Z
+      Value: 20170423T041910Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

@@ -2,7 +2,7 @@
 ID: "6bec0f1f-557a-4de6-8859-05b569692d7c"
 Parent: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Foundation/Westco/Theming/Plain Include/Asset/SriHash
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Asset/SriHash
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
