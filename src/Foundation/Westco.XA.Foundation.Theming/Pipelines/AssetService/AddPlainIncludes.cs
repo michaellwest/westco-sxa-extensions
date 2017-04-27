@@ -6,6 +6,8 @@ using Sitecore;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.StringExtensions;
+using Sitecore.XA.Foundation.IoC;
+using Sitecore.XA.Foundation.Multisite;
 using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
 using Sitecore.XA.Foundation.Theming.Bundler;
 using Sitecore.XA.Foundation.Theming.Configuration;
@@ -23,7 +25,26 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
             var contextItem = Context.Item;
             if (contextItem == null) return;
 
-            var pageAssetsIds = contextItem[Templates.Page.Fields.PageAssets]?.Split('|');
+            var siteItem = ServiceLocator.Current.Resolve<IMultisiteContext>().GetSiteItem(contextItem);
+
+            var settingsItem = siteItem?.Children["Settings"];
+            if (settingsItem == null) return;
+
+            var assetIds = new string[0];
+            var siteAssetsIds = settingsItem[Templates.Page.Fields.AssociatedAssets]?.Split('|');
+            var pageAssetsIds = contextItem[Templates.Page.Fields.AssociatedAssets]?.Split('|');
+
+            if (siteAssetsIds != null && siteAssetsIds.Any())
+            {
+                assetIds = assetIds.Union(siteAssetsIds).ToArray();
+            }
+
+            if (pageAssetsIds != null && pageAssetsIds.Any())
+            {
+                assetIds = assetIds.Union(pageAssetsIds).ToArray();
+            }
+
+            if (!assetIds.Any()) return;
 
             var assetsList = args.AssetsList;
             const int num = 0;
@@ -36,13 +57,9 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                 var mode = GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Mode]);
                 if (string.IsNullOrEmpty(mode) || mode.Equals("Disabled", StringComparison.OrdinalIgnoreCase)) continue;
 
-                var isGlobalAsset = MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsGlobalAsset], false);
-                if (!isGlobalAsset)
+                if (!assetIds.Contains(plainIncludeItem.ID.ToString()))
                 {
-                    if (pageAssetsIds == null || !pageAssetsIds.Any() || !pageAssetsIds.Contains(plainIncludeItem.ID.ToString()))
-                    {
-                        continue;
-                    }
+                    continue;
                 }
 
                 var assetType = (AssetType)Enum.Parse(typeof(AssetType), mode);
@@ -138,14 +155,14 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                     var optimizedItem = assets.FirstOrDefault(i => i.TemplateID == Sitecore.XA.Foundation.Theming.Templates.OptimizedFile.ID);
                     if (optimizedItem != null && !IsNotEmpty(optimizedItem))
                     {
-                        assets = new List<Item> {optimizedItem};
+                        assets = new List<Item> { optimizedItem };
                     }
                     else
                     {
                         optimizedItem = new AssetBundler().GetOptimizedItem(plainIncludeItem, (OptimizationType)assetType, serviceMode);
                         if (optimizedItem != null && IsNotEmpty(optimizedItem))
                         {
-                            assets = new List<Item> {optimizedItem};
+                            assets = new List<Item> { optimizedItem };
                         }
                         else
                         {

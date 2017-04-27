@@ -55,6 +55,9 @@
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.IoC.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sitecore.XA.Foundation.Multisite">
+      <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Multisite.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.XA.Foundation.SitecoreExtensions">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.SitecoreExtensions.dll</HintPath>
     </Reference>
