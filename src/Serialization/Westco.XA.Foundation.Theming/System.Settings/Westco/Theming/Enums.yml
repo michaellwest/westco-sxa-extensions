@@ -1,0 +1,14 @@
+﻿---
+ID: "817f38be-927e-4148-8e61-6af793959a6d"
+Parent: "b8bf3494-bbf1-4d75-a1e2-b456d223d2e3"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Foundation/Westco/Theming/Enums
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170423T041644Z
