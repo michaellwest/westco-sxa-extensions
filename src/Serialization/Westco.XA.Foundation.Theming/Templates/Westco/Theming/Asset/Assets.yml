@@ -2,7 +2,7 @@
 ID: "04310a53-a5f1-409c-9c7a-e7438e8af54e"
 Parent: "fe373fc0-cd4d-4287-be67-9c4c9c1e2a07"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Asset
+Path: /sitecore/templates/Foundation/Westco/Theming/Asset/Assets
 DB: master
 Languages:
 - Language: en

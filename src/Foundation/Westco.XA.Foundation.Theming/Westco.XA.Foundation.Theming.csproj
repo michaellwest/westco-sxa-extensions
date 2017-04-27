@@ -100,4 +100,11 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>echo "Copy build for Mikey"
+IF EXIST C:\Websites\dev.demo (
+    xcopy $(TargetDir)Westco.XA*.* C:\Websites\dev.demo\Website\bin\*.* /s /e /c /y
+    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\dev.demo\Website\App_Config\Include\*.* /s /e /c /y
+)</PostBuildEvent>
+  </PropertyGroup>
 </Project>
