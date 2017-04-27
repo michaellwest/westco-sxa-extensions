@@ -11,7 +11,9 @@ SharedFields:
 - ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
   Hint: __Masters
   Type: TreelistEx
-  Value: "{FE373FC0-CD4D-4287-BE67-9C4C9C1E2A07}"
+  Value: |
+    {FE373FC0-CD4D-4287-BE67-9C4C9C1E2A07}
+    {7C58CA3D-7B46-4E8A-B2C0-7892A952C129}
 - ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
   Hint: __Sortorder
   Value: 450
