@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Theming", "Foundation\Westco.XA.Foundation.Theming\Westco.XA.Foundation.Theming.csproj", "{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Website", "Website\Westco.XA.Website\Westco.XA.Website.csproj", "{66A89989-DDA3-4641-B0F0-6E344265E05C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{27480C93-3574-43A4-BB16-1F0299A7A691}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +21,16 @@ Global
 		{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66A89989-DDA3-4641-B0F0-6E344265E05C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66A89989-DDA3-4641-B0F0-6E344265E05C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66A89989-DDA3-4641-B0F0-6E344265E05C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66A89989-DDA3-4641-B0F0-6E344265E05C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB} = {6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}
+		{66A89989-DDA3-4641-B0F0-6E344265E05C} = {27480C93-3574-43A4-BB16-1F0299A7A691}
 	EndGlobalSection
 EndGlobal
