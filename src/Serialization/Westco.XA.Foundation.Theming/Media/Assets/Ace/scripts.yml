@@ -1,0 +1,18 @@
+﻿---
+ID: "5386f7b5-dc8d-4026-a14e-8432a720af36"
+Parent: "505420ed-a363-43cf-9f8c-d7385704cbb2"
+Template: "536ef8ae-e6df-4aed-bd84-1f18de8cebf7"
+Path: /sitecore/media library/Assets/Ace/scripts
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170425T012441Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

@@ -1,0 +1,14 @@
+﻿---
+ID: "26cbca44-b74e-471c-b584-8277bb816e1f"
+Parent: "bd754fd9-1a3d-4bf7-bd8b-c2d075cda222"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Feature/Westco/Maps
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170429T031948Z

@@ -1,0 +1,25 @@
+﻿---
+ID: "dff9a2b2-31a1-43b6-81d0-b5e08136fcbf"
+Parent: "586b3b7c-d533-41b3-99b7-eb7586e344f1"
+Template: "586b3b7c-d533-41b3-99b7-eb7586e344f1"
+Path: /sitecore/templates/Feature/Westco/Maps/Static Maps Folder/__Standard Values
+DB: master
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: |
+    {30B8B44C-6274-45E6-B2EC-0F16C1C02271}
+    {586B3B7C-D533-41B3-99B7-EB7586E344F1}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170429T032539Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
