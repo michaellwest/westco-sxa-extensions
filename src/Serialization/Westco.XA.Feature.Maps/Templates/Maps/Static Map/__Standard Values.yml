@@ -12,6 +12,12 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: "20170429T052301:636290401811973172Z"
+    - ID: "88d0a8a3-ba85-4ede-b864-6c267ee09870"
+      Hint: Height
+      Value: 250
+    - ID: "9e2729d1-a77e-4bf0-95fc-316d0eb008d3"
+      Hint: Width
+      Value: 250
     - ID: "b38f60da-3a94-4081-a8ee-c672f0bcc66c"
       Hint: Mode
       Value: "{1DE3AC41-F1CB-440B-954B-5260AE3EB285}"
