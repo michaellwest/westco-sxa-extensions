@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Script.Serialization;
+using Sitecore;
 using Sitecore.Data;
+using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.XA.Foundation.IoC;
@@ -26,12 +28,25 @@ namespace Westco.XA.Feature.Maps.Repositories
             }
         }
 
+        protected virtual int Zoom
+        {
+            get
+            {
+                if (this.Rendering.DataSourceItem != null)
+                {
+                    var zoomItem = Context.Database.GetItem(this.Rendering.DataSourceItem.Fields[Sitecore.XA.Feature.Maps.Templates.Map.Fields.Zoom].Value);
+                    var field = zoomItem?.Fields[Sitecore.XA.Foundation.Common.Templates.Enum.Fields.Value];
+                    if (field != null)
+                        return int.Parse(field.Value);
+                }
+                return 15;
+            }
+        }
+
         protected virtual Item GetPoiIcon(Item item)
         {
-            string id = item[Sitecore.XA.Foundation.Geospatial.Templates.Poi.Fields.Type];
-            if (ID.IsID(id))
-                return this.ContentRepository.GetItem(new ID(id));
-            return (Item)null;
+            var id = item[Sitecore.XA.Foundation.Geospatial.Templates.Poi.Fields.Type];
+            return ID.IsID(id) ? ContentRepository.GetItem(new ID(id)) : null;
         }
 
         protected virtual void GetPois(Item item, List<Sitecore.XA.Feature.Maps.Models.Poi> result)
@@ -56,15 +71,14 @@ namespace Westco.XA.Feature.Maps.Repositories
             get
             {
                 var result = new List<Sitecore.XA.Feature.Maps.Models.Poi>();
-                if (this.Rendering.DataSourceItem != null)
+                if (this.Rendering.DataSourceItem == null) return result;
+
+                var str1 = Rendering.DataSourceItem[Templates.StaticMap.Fields.Poi];
+                var chArray = new [] { '|' };
+                foreach (var str2 in str1.Split(chArray))
                 {
-                    string str1 = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.Poi];
-                    char[] chArray = new char[1] { '|' };
-                    foreach (string str2 in str1.Split(chArray))
-                    {
-                        if (ID.IsID(str2))
-                            this.GetPois(this.ContentRepository.GetItem(str2), result);
-                    }
+                    if (ID.IsID(str2))
+                        GetPois(ContentRepository.GetItem(str2), result);
                 }
                 return result;
             }
@@ -73,12 +87,13 @@ namespace Westco.XA.Feature.Maps.Repositories
         protected virtual string GetJsonDataProperties()
         {
             var mode = this.MapMode.ToString();
-            var mapsProviderKey = this.GetMapsProviderKey(this.PageContext.Current);
+            var key = this.GetMapsProviderKey(this.PageContext.Current);
+            var zoom = this.Zoom.ToString();
+            var width = Rendering.DataSourceItem[Templates.StaticMap.Fields.Width];
+            var height = Rendering.DataSourceItem[Templates.StaticMap.Fields.Height];
             var data = new
             {
-                mode = mode,
-                Pois = this.Pois,
-                key = mapsProviderKey,
+                mode, Pois, key, zoom, width, height
             };
             return new JavaScriptSerializer().Serialize((object)data);
         }
@@ -89,9 +104,9 @@ namespace Westco.XA.Feature.Maps.Repositories
             FillBaseProperties(staticmapRenderingModel);
             staticmapRenderingModel.JsonDataProperties = GetJsonDataProperties();
             staticmapRenderingModel.Width =
-                Rendering.DataSourceItem[Sitecore.XA.Feature.Maps.Templates.Map.Fields.Width];
+                Rendering.DataSourceItem[Templates.StaticMap.Fields.Width];
             staticmapRenderingModel.Height =
-                Rendering.DataSourceItem[Sitecore.XA.Feature.Maps.Templates.Map.Fields.Height];
+                Rendering.DataSourceItem[Templates.StaticMap.Fields.Height];
             return staticmapRenderingModel;
         }
 
