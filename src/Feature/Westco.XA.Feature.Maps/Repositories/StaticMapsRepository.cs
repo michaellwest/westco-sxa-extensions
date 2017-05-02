@@ -3,7 +3,6 @@ using System.Linq;
 using System.Web.Script.Serialization;
 using Sitecore;
 using Sitecore.Data;
-using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
 using Sitecore.XA.Foundation.IoC;
@@ -16,30 +15,17 @@ namespace Westco.XA.Feature.Maps.Repositories
 {
     public class StaticMapsRepository : ModelRepository, IStaticMapRepository
     {
-        protected virtual StaticMapModes MapMode
-        {
-            get
-            {
-                if (Rendering.DataSourceItem != null)
-                    return
-                        Rendering.DataSourceItem.Fields[Sitecore.XA.Feature.Maps.Templates.Map.Fields.Mode]
-                            .ToEnum<StaticMapModes>();
-                return StaticMapModes.Roadmap;
-            }
-        }
+        protected virtual StaticMapModes MapMode => Rendering.DataSourceItem?.Fields[Templates.StaticMap.Fields.Mode].ToEnum<StaticMapModes>() ?? StaticMapModes.Roadmap;
 
         protected virtual int Zoom
         {
             get
             {
-                if (this.Rendering.DataSourceItem != null)
-                {
-                    var zoomItem = Context.Database.GetItem(this.Rendering.DataSourceItem.Fields[Sitecore.XA.Feature.Maps.Templates.Map.Fields.Zoom].Value);
-                    var field = zoomItem?.Fields[Sitecore.XA.Foundation.Common.Templates.Enum.Fields.Value];
-                    if (field != null)
-                        return int.Parse(field.Value);
-                }
-                return 15;
+                if (this.Rendering.DataSourceItem == null) return 15;
+
+                var zoomItem = Context.Database.GetItem(this.Rendering.DataSourceItem.Fields[Templates.StaticMap.Fields.Zoom].Value);
+                var field = zoomItem?.Fields[Sitecore.XA.Foundation.Common.Templates.Enum.Fields.Value];
+                return field != null ? int.Parse(field.Value) : 15;
             }
         }
 
@@ -49,28 +35,19 @@ namespace Westco.XA.Feature.Maps.Repositories
             return ID.IsID(id) ? ContentRepository.GetItem(new ID(id)) : null;
         }
 
-        protected virtual void GetPois(Item item, List<Sitecore.XA.Feature.Maps.Models.Poi> result)
+        protected virtual void GetPois(Item item, List<Poi> result)
         {
             if (item == null)
                 return;
-            if (item.InheritsFrom(Sitecore.XA.Feature.Maps.Templates.PoiGroup.ID) || item.InheritsFrom(Sitecore.XA.Feature.Maps.Templates.PoiGroupingItem.ID))
-            {
-                foreach (Item child in item.GetChildren())
-                    this.GetPois(child, result);
-            }
-            else
-            {
-                if (!item.InheritsFrom(Sitecore.XA.Feature.Maps.Templates.MyLocationPoi.ID) && !item.InheritsFrom(Sitecore.XA.Foundation.Geospatial.Templates.IPoi.ID))
-                    return;
-                result.Add(new Sitecore.XA.Feature.Maps.Models.Poi(item, this.GetPoiIcon(item), null));
-            }
+            if (!item.InheritsFrom(Sitecore.XA.Foundation.Geospatial.Templates.IPoi.ID)) return;
+                result.Add(new Poi(item, this.GetPoiIcon(item)));
         }
 
-        protected virtual List<Sitecore.XA.Feature.Maps.Models.Poi> Pois
+        protected virtual List<Poi> Pois
         {
             get
             {
-                var result = new List<Sitecore.XA.Feature.Maps.Models.Poi>();
+                var result = new List<Poi>();
                 if (this.Rendering.DataSourceItem == null) return result;
 
                 var str1 = Rendering.DataSourceItem[Templates.StaticMap.Fields.Poi];
@@ -86,7 +63,7 @@ namespace Westco.XA.Feature.Maps.Repositories
 
         protected virtual string GetJsonDataProperties()
         {
-            var mode = this.MapMode.ToString();
+            var mode = this.MapMode.ToString().ToLower();
             var key = this.GetMapsProviderKey(this.PageContext.Current);
             var zoom = this.Zoom.ToString();
             var width = Rendering.DataSourceItem[Templates.StaticMap.Fields.Width];
@@ -115,16 +92,9 @@ namespace Westco.XA.Feature.Maps.Repositories
             if (ServiceLocator.Current.Resolve<IMultisiteContext>().GetSiteItem(contextItem) == null)
                 return string.Empty;
 
-            var providerSettings =
-                ServiceLocator.Current.Resolve<IMultisiteContext>()
-                    .GetSettingsItem(contextItem)
-                    .Children.FirstOrDefault(
-                        i =>
-                            TemplateManager.GetTemplate(i)
-                                .InheritsFrom(Sitecore.XA.Feature.Maps.Templates.MapsProvider.ID));
-            return providerSettings != null
-                ? providerSettings[Sitecore.XA.Feature.Maps.Templates.MapsProvider.Fields.Key]
-                : string.Empty;
+            var providerSettings = ServiceLocator.Current.Resolve<IMultisiteContext>().GetSettingsItem(contextItem)
+                    .Children.FirstOrDefault(i => TemplateManager.GetTemplate(i).InheritsFrom(Templates.StaticMapsProvider.Id));
+            return providerSettings != null ? providerSettings[Templates.StaticMapsProvider.Fields.Key] : string.Empty;
         }
     }
 }

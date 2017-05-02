@@ -52,12 +52,13 @@
         render : function () {
             var that = this,
                 properties = this.model.get("dataProperties");
+                const maptype = properties.mode;
                 const width = parseInt(properties.width);
                 const height = parseInt(properties.height);
                 const size = `${width}x${height}`;
                 const zoom = this.parseZoom(properties.zoom, 15);
                 const key = properties.key;
-                let imgUrl = `https://maps.googleapis.com/maps/api/staticmap?size=${size}&zoom=${zoom}&key=${key}&`;
+                let imgUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=${maptype}&size=${size}&zoom=${zoom}&`;
 
                 let markers = [];
                 const pois = properties.Pois;
@@ -72,6 +73,7 @@
                 }
 
                 imgUrl += markers.join('&');
+                imgUrl += `&key=${key}`;
                 const $img = $('<img>');
                 $img.attr('src', imgUrl);
                 $(that.$el).find('.static-map').append($img);

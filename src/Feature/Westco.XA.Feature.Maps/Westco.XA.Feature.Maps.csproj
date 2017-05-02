@@ -43,9 +43,6 @@
       <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.170407\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Feature.Maps">
-      <HintPath>..\..\..\lib\Sitecore.XA.Feature.Maps.dll</HintPath>
-    </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
       <Private>False</Private>
@@ -86,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\StaticMapController.cs" />
+    <Compile Include="Models\Poi.cs" />
     <Compile Include="Models\StaticMapModes.cs" />
     <Compile Include="Models\StaticMapRenderingModel.cs" />
     <Compile Include="Pipelines\IoC\RegisterMapServices.cs" />
