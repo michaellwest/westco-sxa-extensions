@@ -53,6 +53,9 @@
             var that = this,
                 properties = this.model.get("dataProperties");
                 const maptype = properties.mode;
+                const centerLatitude = parseInt(properties.centerLatitude);
+                const centerLongitude = parseInt(properties.centerLongitude);
+                const center = `${centerLatitude},${centerLongitude}`;
                 const width = parseInt(properties.width);
                 const height = parseInt(properties.height);
                 const size = `${width}x${height}`;

@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{8B39
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.Maps", "Feature\Westco.XA.Feature.Maps\Westco.XA.Feature.Maps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Geospatial", "Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj", "{F60B8F92-25EF-47A3-84F4-378FFE288F5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60B8F92-25EF-47A3-84F4-378FFE288F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60B8F92-25EF-47A3-84F4-378FFE288F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60B8F92-25EF-47A3-84F4-378FFE288F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60B8F92-25EF-47A3-84F4-378FFE288F5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,5 +47,6 @@ Global
 		{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB} = {6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}
 		{66A89989-DDA3-4641-B0F0-6E344265E05C} = {27480C93-3574-43A4-BB16-1F0299A7A691}
 		{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75} = {8B39AA37-63A4-4621-AFCB-2DAA96172CA0}
+		{F60B8F92-25EF-47A3-84F4-378FFE288F5E} = {6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}
 	EndGlobalSection
 EndGlobal

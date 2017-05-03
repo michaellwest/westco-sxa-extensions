@@ -1,0 +1,75 @@
+﻿---
+ID: "64a541ee-01ea-4e0c-8b4a-25e726f0c648"
+Parent: "db2c397e-d421-4813-be0a-9637cefe6cf1"
+Template: "ea8a3f26-9ccd-443a-95f5-71b868a94bd0"
+Path: /sitecore/system/Settings/Feature/Westco/Maps/Site Setup/Add Available Renderings
+DB: master
+SharedFields:
+- ID: "4795a7c6-08a9-4248-86c3-d460062c3a22"
+  Hint: Location
+  Type: Treelist
+  Value: "{84179507-91A2-47EA-A424-9D338F64C953}"
+- ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
+  Hint: Name
+  Value: Maps
+- ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
+  Hint: Template
+  Type: Treelist
+  Value: "{1FEA926E-54E2-4A65-ADB3-37BACEAC4742}"
+Languages:
+- Language: da
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Tilføj tilgængelige renderinger
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170418T232256Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Anonymous
+- Language: "de-DE"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Verfügbare Renderings hinzufügen
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170418T232444Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Anonymous
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160701T083006Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+- Language: "ja-JP"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: 有効なレンダリングを追加します
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170418T232616Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Anonymous

@@ -1,9 +1,22 @@
 ﻿---
-ID: "52e6a256-ad9d-45c7-91a7-3b80be42a6b0"
+ID: "c48869f8-a2f7-4ddf-86f6-527706691176"
 Parent: "30b8b44c-6274-45e6-b2ec-0f16c1c02271"
 Template: "30b8b44c-6274-45e6-b2ec-0f16c1c02271"
 Path: /sitecore/templates/Feature/Westco/Maps/Static Map/__Standard Values
 DB: master
+SharedFields:
+- ID: "88d0a8a3-ba85-4ede-b864-6c267ee09870"
+  Hint: Height
+  Value: 250
+- ID: "9e2729d1-a77e-4bf0-95fc-316d0eb008d3"
+  Hint: Width
+  Value: 250
+- ID: "b38f60da-3a94-4081-a8ee-c672f0bcc66c"
+  Hint: Mode
+  Value: "{1DE3AC41-F1CB-440B-954B-5260AE3EB285}"
+- ID: "edb23712-85c9-42ed-bfa5-8ec8e1eb1a16"
+  Hint: Zoom
+  Value: "{34BDBD01-42F2-4093-85DC-0F40EC3610A3}"
 Languages:
 - Language: en
   Versions:
@@ -11,13 +24,8 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: "20170429T052301:636290401811973172Z"
-    - ID: "88d0a8a3-ba85-4ede-b864-6c267ee09870"
-      Hint: Height
-      Value: 250
-    - ID: "9e2729d1-a77e-4bf0-95fc-316d0eb008d3"
-      Hint: Width
-      Value: 250
-    - ID: "b38f60da-3a94-4081-a8ee-c672f0bcc66c"
-      Hint: Mode
-      Value: "{1DE3AC41-F1CB-440B-954B-5260AE3EB285}"
+      Value: 20170503T231645Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
