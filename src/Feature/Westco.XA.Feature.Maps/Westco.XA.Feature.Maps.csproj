@@ -98,7 +98,12 @@
     <None Include="packages.config" />
     <Content Include="Views\StaticMap\Static Map.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj">
+      <Project>{f60b8f92-25ef-47a3-84f4-378ffe288f5e}</Project>
+      <Name>Westco.XA.Foundation.Geospatial</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"

@@ -40,7 +40,7 @@ namespace Westco.XA.Feature.Maps.Repositories
             if (item == null)
                 return;
             if (!item.InheritsFrom(Sitecore.XA.Foundation.Geospatial.Templates.IPoi.ID)) return;
-                result.Add(new Poi(item, this.GetPoiIcon(item)));
+            result.Add(new Poi(item, this.GetPoiIcon(item)));
         }
 
         protected virtual List<Poi> Pois
@@ -51,7 +51,7 @@ namespace Westco.XA.Feature.Maps.Repositories
                 if (this.Rendering.DataSourceItem == null) return result;
 
                 var str1 = Rendering.DataSourceItem[Templates.StaticMap.Fields.Poi];
-                var chArray = new [] { '|' };
+                var chArray = new[] { '|' };
                 foreach (var str2 in str1.Split(chArray))
                 {
                     if (ID.IsID(str2))
@@ -65,12 +65,21 @@ namespace Westco.XA.Feature.Maps.Repositories
         {
             var mode = this.MapMode.ToString().ToLower();
             var key = this.GetMapsProviderKey(this.PageContext.Current);
+            var latitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLongitude];
+            var longitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLatitude];
             var zoom = this.Zoom.ToString();
             var width = Rendering.DataSourceItem[Templates.StaticMap.Fields.Width];
             var height = Rendering.DataSourceItem[Templates.StaticMap.Fields.Height];
             var data = new
             {
-                mode, Pois, key, zoom, width, height
+                mode,
+                latitude,
+                longitude,
+                Pois,
+                key,
+                zoom,
+                width,
+                height
             };
             return new JavaScriptSerializer().Serialize((object)data);
         }
@@ -93,8 +102,8 @@ namespace Westco.XA.Feature.Maps.Repositories
                 return string.Empty;
 
             var providerSettings = ServiceLocator.Current.Resolve<IMultisiteContext>().GetSettingsItem(contextItem)
-                    .Children.FirstOrDefault(i => TemplateManager.GetTemplate(i).InheritsFrom(Templates.StaticMapsProvider.Id));
-            return providerSettings != null ? providerSettings[Templates.StaticMapsProvider.Fields.Key] : string.Empty;
+                    .Children.FirstOrDefault(i => TemplateManager.GetTemplate(i).InheritsFrom(Foundation.Geospatial.Templates.StaticMapsProvider.Id));
+            return providerSettings != null ? providerSettings[Foundation.Geospatial.Templates.StaticMapsProvider.Fields.Key] : string.Empty;
         }
     }
 }
