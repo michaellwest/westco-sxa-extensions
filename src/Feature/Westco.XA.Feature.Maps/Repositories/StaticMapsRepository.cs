@@ -65,8 +65,8 @@ namespace Westco.XA.Feature.Maps.Repositories
         {
             var mode = this.MapMode.ToString().ToLower();
             var key = this.GetMapsProviderKey(this.PageContext.Current);
-            var latitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLongitude];
-            var longitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLatitude];
+            var longitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLongitude];
+            var latitude = this.Rendering.DataSourceItem[Templates.StaticMap.Fields.CentralPointLatitude];
             var zoom = this.Zoom.ToString();
             var width = Rendering.DataSourceItem[Templates.StaticMap.Fields.Width];
             var height = Rendering.DataSourceItem[Templates.StaticMap.Fields.Height];
