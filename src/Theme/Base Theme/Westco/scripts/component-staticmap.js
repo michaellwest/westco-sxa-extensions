@@ -53,15 +53,19 @@
             var that = this,
                 properties = this.model.get("dataProperties");
                 const maptype = properties.mode;
-                const latitude = parseInt(properties.latitude);
-                const longitude = parseInt(properties.longitude);
+                const latitude = properties.latitude;
+                const longitude = properties.longitude;
                 const center = `${latitude},${longitude}`;
                 const width = parseInt(properties.width);
                 const height = parseInt(properties.height);
                 const size = `${width}x${height}`;
                 const zoom = this.parseZoom(properties.zoom, 15);
                 const key = properties.key;
-                let imgUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=${maptype}&size=${size}&zoom=${zoom}&`;
+                let imgUrl = `https://maps.googleapis.com/maps/api/staticmap?maptype=${maptype}&size=${size}&zoom=${zoom}`;
+                
+                if(latitude && longitude) {
+                    imgUrl += `&center=${center}`;
+                }
 
                 let markers = [];
                 const pois = properties.Pois;
@@ -75,7 +79,9 @@
                     markers.push(`markers=icon:${poi.PoiIcon}%7C${poi.Latitude},${poi.Longitude}`)
                 }
 
-                imgUrl += markers.join('&');
+                if(markers) {
+                    imgUrl += "&" + markers.join('&');
+                }
                 imgUrl += `&key=${key}`;
                 const $img = $('<img>');
                 $img.attr('src', imgUrl);
