@@ -1,0 +1,26 @@
+﻿---
+ID: "dd466246-b47e-4bd6-be9b-80f1cfeb201a"
+Parent: "ccd392fa-003b-4c11-a1d1-7d1ada08cc60"
+Template: "292ccfcd-7790-4692-856b-76014b8038e7"
+Path: /sitecore/system/Settings/Foundation/Westco/Geospatial/Site Setup
+DB: master
+SharedFields:
+- ID: "11488836-d40f-40d4-beb4-1d31da7b1470"
+  Hint: IncludeByDefault
+  Type: Checkbox
+  Value: 1
+- ID: "40deee2f-7595-40bd-b2c9-51f9e2346100"
+  Hint: Dependencies
+  Type: Treelist
+  Value: "{D132F62B-B14B-4A66-867B-E6CB9C65E990}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20160822T151152Z
+    - ID: "c202067e-7fab-4606-afb4-e76df2185ddc"
+      Hint: Name
+      Value: Geospatial (Static Maps)
