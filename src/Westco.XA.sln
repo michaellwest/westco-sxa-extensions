@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{2748
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{8B39AA37-63A4-4621-AFCB-2DAA96172CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.Maps", "Feature\Westco.XA.Feature.Maps\Westco.XA.Feature.Maps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.StaticMaps", "Feature\Westco.XA.Feature.StaticMaps\Westco.XA.Feature.StaticMaps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Geospatial", "Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj", "{F60B8F92-25EF-47A3-84F4-378FFE288F5E}"
 EndProject
