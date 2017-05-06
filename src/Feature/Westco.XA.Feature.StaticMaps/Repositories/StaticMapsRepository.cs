@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Web.Script.Serialization;
-using Sitecore;
+﻿using Sitecore;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
@@ -9,6 +6,9 @@ using Sitecore.XA.Foundation.IoC;
 using Sitecore.XA.Foundation.Multisite;
 using Sitecore.XA.Foundation.Mvc.Repositories.Base;
 using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Script.Serialization;
 using Westco.XA.Feature.StaticMaps.Models;
 using Templates = Westco.XA.Feature.Maps.Templates;
 
