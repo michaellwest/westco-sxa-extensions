@@ -11,11 +11,11 @@ SharedFields:
   Value: "{84179507-91A2-47EA-A424-9D338F64C953}"
 - ID: "7868e6bc-525c-4fce-ab8a-77da3e09b171"
   Hint: Name
-  Value: Maps
+  Value: Static Maps
 - ID: "e62c28f0-9d3b-46e2-8bec-a5e120542499"
   Hint: Template
   Type: Treelist
-  Value: "{1FEA926E-54E2-4A65-ADB3-37BACEAC4742}"
+  Value: "{10F44AF6-E935-4BF0-8695-5DFB2FB6F22C}"
 Languages:
 - Language: da
   Fields:

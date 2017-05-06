@@ -2,7 +2,7 @@
 ID: "3c44f1e5-41c5-4393-876f-9002fcc3289e"
 Parent: "db2c397e-d421-4813-be0a-9637cefe6cf1"
 Template: "ea8a3f26-9ccd-443a-95f5-71b868a94bd0"
-Path: /sitecore/system/Settings/Feature/Westco/StaticMaps/Site Setup/Add Maps Data Item
+Path: /sitecore/system/Settings/Feature/Westco/StaticMaps/Site Setup/Add Static Maps Data Item
 DB: master
 SharedFields:
 - ID: "4795a7c6-08a9-4248-86c3-d460062c3a22"
