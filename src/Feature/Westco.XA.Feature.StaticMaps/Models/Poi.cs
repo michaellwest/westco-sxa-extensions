@@ -2,6 +2,7 @@
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Resources.Media;
+using Westco.XA.Feature.StaticMaps;
 
 namespace Westco.XA.Feature.StaticMaps.Models
 {
@@ -21,7 +22,9 @@ namespace Westco.XA.Feature.StaticMaps.Models
             var imageField = (ImageField) iconItem?.Fields["Icon"];
             if (imageField?.MediaItem == null)
                 return;
-            PoiIcon = MediaManager.GetMediaUrl(imageField.MediaItem);
+
+            var muo = new MediaUrlOptions { AlwaysIncludeServerUrl = true };
+            PoiIcon = MediaManager.GetMediaUrl(imageField.MediaItem, muo);
         }
 
         public ID Id { get; set; }
