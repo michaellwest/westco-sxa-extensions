@@ -1,0 +1,19 @@
+﻿@using System
+@using System.Web.Mvc.Html
+@using Sitecore.StringExtensions
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+
+@model Westco.XA.Feature.FormBuilder.Models.InputFormElementRenderingModel
+
+<div @Html.Sxa().Component("input-form-element")>
+    <div class="component-content">
+        <input id="@Model.Item.ID" 
+               name="@Model.InputName"
+               type="@Model.InputType"
+               @(Model.IsRequired ? Html.Raw("required") : Html.Raw(string.Empty))
+               @(Model.InputTitle.IsNullOrEmpty() ? Html.Raw(String.Empty) : Html.Raw($"title={Model.InputTitle}"))
+               />
+    </div>
+</div>
+
