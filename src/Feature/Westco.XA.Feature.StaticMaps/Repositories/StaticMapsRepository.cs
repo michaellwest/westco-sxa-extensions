@@ -25,10 +25,8 @@ namespace Westco.XA.Feature.StaticMaps.Repositories
             {
                 if (Rendering.DataSourceItem == null) return 15;
 
-                var zoomItem = Context.Database.GetItem(Rendering.DataSourceItem.Fields[Templates.StaticMap.Fields.Zoom]
-                    .Value);
-                var field = zoomItem?.Fields[Sitecore.XA.Foundation.Common.Templates.Enum.Fields.Value];
-                return field != null ? int.Parse(field.Value) : 15;
+                var zoomValue = Rendering.DataSourceItem.Fields[Templates.StaticMap.Fields.Zoom].GetEnumValue();
+                return string.IsNullOrEmpty(zoomValue) ? 15 : int.Parse(zoomValue);
             }
         }
 
