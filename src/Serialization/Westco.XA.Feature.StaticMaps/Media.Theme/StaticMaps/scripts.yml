@@ -1,0 +1,18 @@
+﻿---
+ID: "274441a8-a8c9-4ebf-9770-c8ecc5f4947c"
+Parent: "0f7bb764-e4dc-4898-b073-a210b73dbd38"
+Template: "536ef8ae-e6df-4aed-bd84-1f18de8cebf7"
+Path: /sitecore/media library/Base Themes/StaticMaps/scripts
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170502T010928Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
