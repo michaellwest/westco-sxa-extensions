@@ -12,7 +12,7 @@ SharedFields:
     
     $name = "Westco-XA-Extensions"
     $package = New-Package -Name $name
-    $package.Sources.Clear();
+    $package.Sources.Clear()
     
     $versionFilePath = [System.IO.Path]::GetFullPath("$($AppPath)\bin\Westco.XA.Website.dll")
     $version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($versionFilePath).FileVersion
