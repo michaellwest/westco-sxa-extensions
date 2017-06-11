@@ -1,0 +1,97 @@
+﻿---
+ID: "938827ca-b055-4eca-a4d1-b993e5a1617d"
+Parent: "27a70cd9-4d48-4182-9568-8434168c63dc"
+Template: "dd22f1b3-bd87-4db2-9e7d-f7a496888d43"
+Path: /sitecore/system/Modules/PowerShell/Script Library/Westco/Platform/Development/Packaging
+DB: master
+SharedFields:
+- ID: "b1a94ff0-6897-47c0-9c51-aa6acb80b1f0"
+  Hint: Script
+  Value: |
+    # Packages
+    
+    $name = "Westco-XA-Extensions"
+    $package = New-Package -Name $name
+    $package.Sources.Clear();
+    
+    $versionFilePath = [System.IO.Path]::GetFullPath("$($AppPath)\bin\Westco.XA.Website.dll")
+    $version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($versionFilePath).FileVersion
+    
+    $package.Metadata.Author = "Michael West"
+    $package.Metadata.Publisher = "Westco XA Extensions"
+    $package.Metadata.Version = $version
+    $package.Metadata.Readme = @"
+    This module provides features additional to those offer by SXA.
+    
+    Copyright (c) 2017 Michael West
+    
+    http://michaellwest.blogspot.com/
+    "@
+    
+    # Templates
+    $source = Get-Item "master:\templates\Foundation\Westco" | 
+        New-ItemSource -Name "Templates.Foundation" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    $source = Get-Item "master:\templates\Feature\Westco" | 
+        New-ItemSource -Name "Templates.Feature" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    $source = Get-Item "master:\templates\Branches\Feature\Westco" | 
+        New-ItemSource -Name "Templates.Branches.Feature" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    # Settings
+    $source = Get-Item "master:\system\Settings\Foundation\Westco" | 
+        New-ItemSource -Name "System.Settings.Foundation" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    $source = Get-Item "master:\system\Settings\Feature\Westco" | 
+        New-ItemSource -Name "System.Settings.Feature" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    # Scripts
+    $source = Get-Item "master:\system\Modules\PowerShell\Script Library\Westco" | 
+        New-ItemSource -Name "System.Modules.PowerShell" -InstallMode Overwrite -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    # Media
+    $source = Get-Item "master:\media library\Base Themes\StaticMaps" | 
+        New-ExplicitItemSource -Name "Media.Theme" -InstallMode Merge -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    $source = Get-Item "master:\media library\Assets" | 
+        New-ExplicitItemSource -Name "Media.Assets" -InstallMode Merge -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    # Layout
+    $source = Get-Item "master:\layout\Renderings\Feature\Westco" | 
+        New-ExplicitItemSource -Name "Layout.Renderings.Feature" -InstallMode Merge -MergeMode Merge
+    $package.Sources.Add($source)
+    
+    # Files
+    $source = Get-Item "$AppPath\App_Config\Include\Website\Westco\*.*" | New-ExplicitFileSource -Name "Website Configuration Files"
+    $package.Sources.Add($source)
+    $source = Get-Item "$AppPath\App_Config\Include\Foundation\Westco\*.*" | New-ExplicitFileSource -Name "Foundation Configuration Files"
+    $package.Sources.Add($source)
+    $source = Get-Item "$AppPath\App_Config\Include\Feature\Westco\*.*" | New-ExplicitFileSource -Name "Feature Configuration Files"
+    $package.Sources.Add($source)
+    $source = Get-Item "$AppPath\bin\Westco.XA.*.dll" | New-ExplicitFileSource -Name "Binaries"
+    $package.Sources.Add($source)
+    $source = Get-Item "$AppPath\Views\StaticMap\*.*" | New-ExplicitFileSource -Name "StaticMap Views"
+    $package.Sources.Add($source)
+    
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name).xml"
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name).zip" -Zip
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170610T223616Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
