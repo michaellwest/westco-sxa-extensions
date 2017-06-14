@@ -50,7 +50,7 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
             var assetsList = args.AssetsList;
             const int num = 0;
 
-            var plainIncludeItems = contextItem.Axes.SelectItems("/sitecore/media library//*[@@templateid='{0}']".FormatWith(Templates.PlainInclude.Id));
+            var plainIncludeItems = contextItem.Axes.SelectItems($"/sitecore/media library//*[@@templateid='{Templates.PlainInclude.Id}']");
             if (!plainIncludeItems.Any()) return;
 
             foreach(var assetId in assetIds)
