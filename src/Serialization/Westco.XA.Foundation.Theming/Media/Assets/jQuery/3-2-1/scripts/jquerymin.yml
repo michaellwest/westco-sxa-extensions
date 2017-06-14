@@ -2,7 +2,7 @@
 ID: "8375a7da-bf18-4cfc-9053-073f7145fbe5"
 Parent: "c1ccc2f9-0fb6-4e66-a317-a60c0a74eeb7"
 Template: "962b53c4-f93b-4df9-9821-415c867b8903"
-Path: "/sitecore/media library/Assets/jQuery-3-2-1/scripts/jquerymin"
+Path: "/sitecore/media library/Assets/jquery/3-2-1/scripts/jquerymin"
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"

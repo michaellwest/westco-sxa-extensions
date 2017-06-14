@@ -2,7 +2,7 @@
 ID: "a2f0f957-10a9-446a-afcf-e289051cc35c"
 Parent: "5386f7b5-dc8d-4026-a14e-8432a720af36"
 Template: "b43ab8d5-e123-42dd-8042-de869cc98c4f"
-Path: /sitecore/media library/Assets/Ace/scripts/optimized
+Path: /sitecore/media library/Assets/ace/scripts/optimized
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"

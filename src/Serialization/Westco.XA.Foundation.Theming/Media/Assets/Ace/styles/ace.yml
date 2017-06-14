@@ -2,7 +2,7 @@
 ID: "bdf4abb3-5205-4c1a-9e1d-7e3f428d4f29"
 Parent: "5ca218d6-f480-4503-92d9-321eeafb9c5c"
 Template: "962b53c4-f93b-4df9-9821-415c867b8903"
-Path: /sitecore/media library/Assets/Ace/styles/ace
+Path: /sitecore/media library/Assets/ace/styles/ace
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"

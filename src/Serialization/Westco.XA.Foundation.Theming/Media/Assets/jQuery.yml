@@ -1,0 +1,14 @@
+﻿---
+ID: "118f03e1-3275-4c44-949d-3b821bfb718e"
+Parent: "74857f33-40d9-4a62-b11a-5505b87e0f57"
+Template: "7c58ca3d-7b46-4e8a-b2c0-7892a952c129"
+Path: /sitecore/media library/Assets/jquery
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170614T030625Z
