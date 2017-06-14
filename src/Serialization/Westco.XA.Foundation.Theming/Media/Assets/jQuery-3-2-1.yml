@@ -1,0 +1,33 @@
+﻿---
+ID: "f6035485-459f-44bf-9450-8498b2128d88"
+Parent: "74857f33-40d9-4a62-b11a-5505b87e0f57"
+Template: "fe373fc0-cd4d-4287-be67-9c4c9c1e2a07"
+Path: "/sitecore/media library/Assets/jQuery-3-2-1"
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170614T003852Z
+    - ID: "33e4c4ee-ca6b-4d32-8476-2769e0d98925"
+      Hint: Mode
+      Value: "{A73D6FB5-96AE-4A48-92A6-D2929A2C639C}"
+    - ID: "6bec0f1f-557a-4de6-8859-05b569692d7c"
+      Hint: SriHash
+      Value: "sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    - ID: "76f5998d-1442-4bc4-83b5-57dcdfd279bb"
+      Hint: Cors
+      Value: "{72270CAD-CF9E-47C6-AB8A-5720E088F636}"
+    - ID: "82ab3122-d4a5-4eb0-a997-b751ccc56649"
+      Hint: FallbackTest
+      Value: window.jQuery
+    - ID: "c267a878-113d-47a7-88af-59ad06614fc4"
+      Hint: IsFallbackEnabled
+      Type: Checkbox
+      Value: 1
+    - ID: "fef3e6d6-18fa-4c01-84af-6533872f89be"
+      Hint: AssetUrl
+      Value: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"

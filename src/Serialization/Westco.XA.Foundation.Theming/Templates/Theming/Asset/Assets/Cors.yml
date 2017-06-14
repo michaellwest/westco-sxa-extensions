@@ -8,6 +8,10 @@ SharedFields:
 - ID: "1eb8ae32-e190-44a6-968d-ed904c794ebf"
   Hint: Source
   Value: /sitecore/system/Settings/Foundation/Westco/Theming/Enums/Cross Origin
+- ID: "56776edf-261c-4abc-9fe7-70c618795239"
+  Hint: __Help link
+  Value: |
+    <link linktype="external" url="https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_settings_attributes" anchor="" target="" />
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: Droplink
@@ -20,6 +24,12 @@ Languages:
   - ID: "19a69332-a23e-4e70-8d16-b2640cb24cc8"
     Hint: Title
     Value: "Cross-Origin Resource Sharing (CORS)"
+  - ID: "577f1689-7de4-4ad2-a15f-7fdc1759285f"
+    Hint: __Long description
+    Value: |
+      In most scenarios you will choose "anonymous". When the resource is under your control, you may choose "use-credential".
+      
+      The term 'use credentials' for the purposes of this specification means cookies, HTTP authentication, and client-side SSL certificates that would be sent based on the user agent's previous interactions with the origin.
   Versions:
   - Version: 1
     Fields:

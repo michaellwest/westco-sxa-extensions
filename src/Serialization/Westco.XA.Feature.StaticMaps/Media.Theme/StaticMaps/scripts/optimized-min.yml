@@ -1,0 +1,41 @@
+﻿---
+ID: "765c9af9-18f4-48f9-8903-0e71fbc30a8d"
+Parent: "274441a8-a8c9-4ebf-9770-c8ecc5f4947c"
+Template: "b43ab8d5-e123-42dd-8042-de869cc98c4f"
+Path: "/sitecore/media library/Base Themes/StaticMaps/scripts/optimized-min"
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: People/32x32/package.png
+- ID: "40e50ed9-ba07-4702-992e-a912738d32dc"
+  Hint: Blob
+  BlobID: "dbe90558-0b14-4a6e-88b0-3b7fa789eeb9"
+  Value: WEEuY29tcG9uZW50LnN0YXRpY21hcD1mdW5jdGlvbihuKXsidXNlIHN0cmljdCI7dmFyIGk9e30sdD1bXSxlLHIsbyxzPVtdLHUsZjtyZXR1cm4gcj1mdW5jdGlvbigpe2Zvcih2YXIgaT10Lmxlbmd0aCxuPTA7bjxpO24rKylzLnB1c2gobmV3IGYoe2VsOnRbbl0sbW9kZWw6bmV3IHV9KSl9LHU9QmFja2JvbmUuTW9kZWwuZXh0ZW5kKHtkZWZhdWx0czp7ZGF0YVByb3BlcnRpZXM6e30sc2hvd2VkOiExLGlkOm51bGx9LGluaXRpYWxpemU6ZnVuY3Rpb24oKXt9fSksZj1CYWNrYm9uZS5WaWV3LmV4dGVuZCh7aW5pdGlhbGl6ZTpmdW5jdGlvbigpe3ZhciBuPXRoaXMuJGVsLmRhdGEoKSx0PW4ucHJvcGVydGllczt0aGlzLm1vZGVsJiYodGhpcy5tb2RlbC5zZXQoe2RhdGFQcm9wZXJ0aWVzOnR9KSx0aGlzLm1vZGVsLnNldCh7aWQ6dGhpcy4kZWwuZmluZCgiLm1hcC1jYW52YXMiKS5wcm9wKCJpZCIpfSkpO3RoaXMucmVuZGVyKCl9LHJlbmRlcjpmdW5jdGlvbigpe3ZhciBzPXRoaXMsdD10aGlzLm1vZGVsLmdldCgiZGF0YVByb3BlcnRpZXMiKTtjb25zdCBoPXQubW9kZSx1PXQubGF0aXR1ZGUsZj10LmxvbmdpdHVkZSxjPWAke3V9LCR7Zn1gLGw9cGFyc2VJbnQodC53aWR0aCksYT1wYXJzZUludCh0LmhlaWdodCksdj1gJHtsfXgke2F9YCx5PXRoaXMucGFyc2Vab29tKHQuem9vbSwxNSkscD10LmtleTtsZXQgaT1gaHR0cHM6Ly9tYXBzLmdvb2dsZWFwaXMuY29tL21hcHMvYXBpL3N0YXRpY21hcD9tYXB0eXBlPSR7aH0mc2l6ZT0ke3Z9Jnpvb209JHt5fWA7dSYmZiYmKGkrPWAmY2VudGVyPSR7Y31gKTtsZXQgcj1bXTtjb25zdCBlPXQuUG9pcyx3PWUubGVuZ3RoO2ZvcihsZXQgbj0wO248dztuKyspe2xldCB0PWVbbl07dC5MYXRpdHVkZSE9PSIiJiZ0LkxvbmdpdHVkZSE9PSIiJiZyLnB1c2goYG1hcmtlcnM9aWNvbjoke3QuUG9pSWNvbn0lN0Mke3QuTGF0aXR1ZGV9LCR7dC5Mb25naXR1ZGV9YCl9ciYmKGkrPSImIityLmpvaW4oIiYiKSk7aSs9YCZrZXk9JHtwfWA7Y29uc3Qgbz1uKCI8aW1nPiIpO28uYXR0cigic3JjIixpKTtuKHMuJGVsKS5maW5kKCIuc3RhdGljLW1hcCIpLmFwcGVuZChvKX0scGFyc2Vab29tOmZ1bmN0aW9uKG4sdCl7dmFyIGk9dDtyZXR1cm4gbiE9PW51bGwmJm4ubGVuZ3RoPjAmJihpc05hTihuKXx8KGk9cGFyc2VJbnQobikpKSxpfX0pLGkuaW5pdD1mdW5jdGlvbigpe3ZhciBpLGY9bigiLnN0YXRpYy1tYXAuY29tcG9uZW50Om5vdCguaW5pdGlhbGl6ZWQpIikscz1mLmxlbmd0aCx1LGg7aWYodHlwZW9mIFhBLmNvbXBvbmVudC5zZWFyY2ghPSJ1bmRlZmluZWQiKVhBLmNvbXBvbmVudC5zZWFyY2gudmVudC5vbigicmVzdWx0cy1sb2FkZWQiLG8pO2lmKHM+MCl7Zm9yKGk9MDtpPHM7aSsrKXU9bihmW2ldKSxoPXUuZGF0YSgicHJvcGVydGllcyIpLGU9aC5rZXksdS5hZGRDbGFzcygiaW5pdGlhbGl6ZWQiKSx0LnB1c2godSk7cigpfX0saX0oalF1ZXJ5LGRvY3VtZW50KTtYQS5yZWdpc3Rlcigic3RhdGljLW1hcCIsWEEuY29tcG9uZW50LnN0YXRpY21hcCk=
+- ID: "6954b7c7-2487-423f-8600-436cb3b6dc0e"
+  Hint: Size
+  Value: 1526
+- ID: "6f47a0a5-9c94-4b48-abeb-42d38def6054"
+  Hint: Mime Type
+  Value: "application/x-javascript"
+- ID: "c06867fe-9a43-4c7d-b739-48780492d06f"
+  Hint: Extension
+  Value: js
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170613T233402Z
+    - ID: "3f4b20e9-36e6-4d45-a423-c86567373f82"
+      Hint: Title
+      Value: "optimized-min"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        extranet\Anonymous
+    - ID: "ba8341a1-ff30-47b8-ae6a-f4947e4113f0"
+      Hint: Description
+      Value: Experience accelerator optimized file

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Sitecore;
+using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.StringExtensions;
@@ -52,15 +53,14 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
             var plainIncludeItems = contextItem.Axes.SelectItems("/sitecore/media library//*[@@templateid='{0}']".FormatWith(Templates.PlainInclude.Id));
             if (!plainIncludeItems.Any()) return;
 
-            foreach (var plainIncludeItem in plainIncludeItems)
+            foreach(var assetId in assetIds)
             {
+                if (assetId.IsNullOrEmpty() || !ID.IsID(assetId)) continue;
+                var plainIncludeItem = plainIncludeItems.FirstOrDefault(pii => pii.ID.ToString() == assetId);
+                if(plainIncludeItem == null) continue;
+
                 var mode = GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Mode]);
                 if (string.IsNullOrEmpty(mode) || mode.Equals("Disabled", StringComparison.OrdinalIgnoreCase)) continue;
-
-                if (!assetIds.Contains(plainIncludeItem.ID.ToString()))
-                {
-                    continue;
-                }
 
                 var assetType = (AssetType)Enum.Parse(typeof(AssetType), mode);
 
