@@ -51,6 +51,8 @@ The final Html output may look like the following:
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" integrity="sha256-1hjUhpc44NwiNg8OwMu2QzJXhD8kcj+sJA3aCQZoUjg=" crossorigin="anonymous"></script>
 ```
 
+---
+
 | [![Michael West](https://gravatar.com/avatar/a2914bafbdf4e967701eb4732bde01c5?s=220)](https://github.com/michaellwest) |
 | --- |
 | [Michael West](https://michaellwest.blogspot.com) |
