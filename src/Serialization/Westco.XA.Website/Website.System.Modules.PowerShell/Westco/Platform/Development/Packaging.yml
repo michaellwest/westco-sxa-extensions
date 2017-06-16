@@ -9,12 +9,12 @@ SharedFields:
   Hint: Script
   Value: |
     Write-Progress -Activity "Building Package" -Status "Metadata"
-    $name = "Westco-XA-Extensions"
+    $name = "Westco-SXA-Extensions"
     $package = New-Package -Name $name
     $package.Sources.Clear()
     
-    $versionFilePath = [System.IO.Path]::GetFullPath("$($AppPath)\bin\Westco.XA.Website.dll")
-    $version = [System.Diagnostics.FileVersionInfo]::GetVersionInfo($versionFilePath).FileVersion
+    $assembly = [System.Reflection.Assembly]::LoadFrom("$($AppPath)\bin\Westco.XA.Website.dll")
+    $version = $assembly.GetName().Version.ToString(3)
     
     $package.Metadata.Author = "Michael West"
     $package.Metadata.Publisher = "Westco XA Extensions"
@@ -87,8 +87,8 @@ SharedFields:
     $package.Sources.Add($source)
     
     Write-Progress -Activity "Exporting Package" -Status "Almost complete"
-    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version.Major)$($version.Minor).xml"
-    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version.Major)$($version.Minor).zip" -Zip
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version).xml"
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version).zip" -Zip
 Languages:
 - Language: en
   Versions:
