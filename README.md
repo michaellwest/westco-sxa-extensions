@@ -1,9 +1,9 @@
-# Westco XA Extensions
-**Westco XA Extensions** is a set of extensions for **Sitecore Experience Accelerator** module.
+# Westco SXA Extensions
+**Westco SXA Extensions** is a set of extensions for **Sitecore Experience Accelerator** module.
 
 Solution uses [Helix](http://helix.sitecore.net/)
 
-Current **Westco XA Extensions** project is compatible with:
+Current **Westco SXA Extensions** project is compatible with:
 
 | Product   |      Version      |  Revision |
 |----------|:-------------:|:------:|
@@ -50,6 +50,22 @@ The final Html output may look like the following:
 <script>console.log('Run after CDN link and fallback test.');</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js" integrity="sha256-1hjUhpc44NwiNg8OwMu2QzJXhD8kcj+sJA3aCQZoUjg=" crossorigin="anonymous"></script>
 ```
+
+### Asset modes
+
+The configured mode determines the type of html to generate.
+
+- Disabled : Asset is ignored completely.
+- Script : Asset and raw content rendered using `<script>`.
+- ScriptAsync : Same as **Script** plus the `async` attribute.
+- ScriptDefer : Same as **Script** the `defer` attribute.
+- Style : Asset and raw content rednered using `<style>` and `<link>`.
+
+### Url and SRI
+
+The details needed for specifying the Url and SRI can be found on [cdnjs.com](https://cdnjs.com/libraries/jquery)
+
+![Imgur](http://i.imgur.com/9AepjZa.png)
 
 ---
 
