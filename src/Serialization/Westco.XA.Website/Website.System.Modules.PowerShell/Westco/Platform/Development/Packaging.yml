@@ -87,8 +87,8 @@ SharedFields:
     $package.Sources.Add($source)
     
     Write-Progress -Activity "Exporting Package" -Status "Almost complete"
-    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name).xml"
-    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name).zip" -Zip
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version.Major)$($version.Minor).xml"
+    $package | Export-Package -Path "$($SitecorePackageFolder)\$($name)-$($version.Major)$($version.Minor).zip" -Zip
 Languages:
 - Language: en
   Versions:
