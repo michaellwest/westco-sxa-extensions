@@ -53,25 +53,45 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
             var plainIncludeItems = contextItem.Axes.SelectItems($"/sitecore/media library//*[@@templateid='{Templates.PlainInclude.Id}']");
             if (!plainIncludeItems.Any()) return;
 
-            foreach(var assetId in assetIds)
+            foreach (var assetId in assetIds)
             {
                 if (assetId.IsNullOrEmpty() || !ID.IsID(assetId)) continue;
                 var plainIncludeItem = plainIncludeItems.FirstOrDefault(pii => pii.ID.ToString() == assetId);
-                if(plainIncludeItem == null) continue;
+                if (plainIncludeItem == null) continue;
 
                 var mode = GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Mode]);
                 if (string.IsNullOrEmpty(mode) || mode.Equals("Disabled", StringComparison.OrdinalIgnoreCase)) continue;
 
-                var assetType = (AssetType)Enum.Parse(typeof(AssetType), mode);
+                var assetTypeEx = (AssetTypeEx)Enum.Parse(typeof(AssetTypeEx), mode);
+                var assetType = assetTypeEx == AssetTypeEx.Style ? AssetType.Style : AssetType.Script;
 
-                var attributes = new Dictionary<string, string>
+                var attributes = new Dictionary<string, string>();
+
+                if (!plainIncludeItem[Templates.PlainInclude.Fields.SriHash].IsNullOrEmpty())
                 {
-                    {"integrity", plainIncludeItem[Templates.PlainInclude.Fields.SriHash]},
-                    {"crossorigin", GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors])}
-                };
+                    attributes.Add("integrity", plainIncludeItem[Templates.PlainInclude.Fields.SriHash]);
+                }
+
+                if (!plainIncludeItem[Templates.PlainInclude.Fields.Cors].IsNullOrEmpty())
+                {
+                    attributes.Add("crossorigin", GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors]));
+                }
+
+                switch (assetTypeEx)
+                {
+                    case AssetTypeEx.ScriptAsync:
+                        attributes.Add("async", "");
+                        break;
+                    case AssetTypeEx.ScriptDefer:
+                        attributes.Add("defer", "");
+                        break;
+                }
 
                 var url = plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl];
-                var joinedAttributes = string.Join(" ", attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
+                var joinedAttributes = string.Join(" ",
+                    attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
+                joinedAttributes += string.Join(" ",
+                    attributes.Where(a => a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}"));
 
                 var urlContent = GetUrlContent(assetType, url, joinedAttributes);
 
@@ -185,7 +205,7 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
 
         }
 
-        private bool IsNotEmpty(Item optimizedScriptItem)
+        private static bool IsNotEmpty(Item optimizedScriptItem)
         {
             var mediaStream = ((MediaItem)optimizedScriptItem).GetMediaStream();
             return mediaStream?.Length > 0L;
@@ -215,24 +235,24 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
         private static string GetRawContent(AssetType assetType, string rawContent)
         {
             var content = string.Empty;
-            if (assetType == AssetType.Script)
+            switch (assetType)
             {
-                if (!string.IsNullOrEmpty(rawContent))
-                {
-                    content += "<script>{0}</script>".FormatWith(rawContent);
-                }
-            }
-            else if (assetType == AssetType.Style)
-            {
-                if (!string.IsNullOrEmpty(rawContent))
-                {
-                    content += "<style>{0}</style>".FormatWith(rawContent);
-                }
+                case AssetType.Script:
+                    if (!string.IsNullOrEmpty(rawContent))
+                    {
+                        content += "<script>{0}</script>".FormatWith(rawContent);
+                    }
+                    break;
+                case AssetType.Style:
+                    if (!string.IsNullOrEmpty(rawContent))
+                    {
+                        content += "<style>{0}</style>".FormatWith(rawContent);
+                    }
+                    break;
             }
 
             return content;
         }
-
 
         private static string GetEnumFieldValue(LookupField field)
         {
