@@ -73,6 +73,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
     <Compile Include="Pipelines\AssetService\AddPlainIncludes.cs" />
     <Compile Include="Pipelines\AssetService\AssetTypeEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

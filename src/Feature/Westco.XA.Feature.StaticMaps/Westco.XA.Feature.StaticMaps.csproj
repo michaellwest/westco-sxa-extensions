@@ -89,6 +89,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\Version.cs">
+      <Link>Version.cs</Link>
+    </Compile>
     <Compile Include="Controllers\StaticMapController.cs" />
     <Compile Include="Models\Poi.cs" />
     <Compile Include="Models\StaticMapModes.cs" />

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Theming", "Foundation\Westco.XA.Foundation.Theming\Westco.XA.Foundation.Theming.csproj", "{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}"
 EndProject
@@ -16,6 +16,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.StaticMaps", "Feature\Westco.XA.Feature.StaticMaps\Westco.XA.Feature.StaticMaps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Geospatial", "Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj", "{F60B8F92-25EF-47A3-84F4-378FFE288F5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F4C54EE0-BA3B-487E-AD79-19AA9E9CE335}"
+	ProjectSection(SolutionItems) = preProject
+		Version.cs = Version.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
