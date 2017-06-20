@@ -15,7 +15,9 @@ SharedFields:
 - ID: "e830af53-210b-4981-b6a8-f8939f587eb1"
   Hint: Arguments
   Type: Treelist
-  Value: "{78AE1B47-A299-4616-821F-4AF4E0BC19C3}"
+  Value: |
+    {78AE1B47-A299-4616-821F-4AF4E0BC19C3}
+    {D83ADF4B-408A-422A-9088-D949D8688D8C}
 Languages:
 - Language: da
   Fields:

@@ -1,0 +1,14 @@
+﻿---
+ID: "770f1807-16c2-4ddf-bfef-a0a01fc7b655"
+Parent: "d83adf4b-408a-422a-9088-d949d8688d8c"
+Template: "e269fbb5-3750-427a-9149-7aa950b49301"
+Path: /sitecore/templates/Foundation/Westco/Theming/_Theme Settings/Editing
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170620T021940Z

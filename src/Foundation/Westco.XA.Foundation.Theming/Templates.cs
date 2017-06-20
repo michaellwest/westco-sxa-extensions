@@ -29,5 +29,15 @@ namespace Westco.XA.Foundation.Theming
                 public static readonly ID AssociatedAssets = new ID("{72A00709-0572-4356-B2B5-F69A6A604D1A}");
             }
         }
+
+        public struct ThemeSettings
+        {
+            public static ID Id = ID.Parse("{D83ADF4B-408A-422A-9088-D949D8688D8C}");
+
+            public struct Fields
+            {
+                public static readonly ID RichTextStylesheets = new ID("{E556D324-A2BB-46FB-B4C7-FB8746647763}");
+            }
+        }
     }
 }
