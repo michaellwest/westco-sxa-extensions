@@ -1,0 +1,18 @@
+﻿---
+ID: "38ac9260-c20f-4a09-9204-2818880efafe"
+Parent: "e7cbefe8-9112-4b95-a978-4e470d94c54a"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Rules/Definitions/Elements/Project
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: applications/32x32/folder_window.png
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170621T015159Z

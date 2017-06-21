@@ -54,10 +54,6 @@
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.SitecoreExtensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Foundation.Theming">
-      <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Theming.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -77,6 +73,7 @@
       <Link>Version.cs</Link>
     </Compile>
     <Compile Include="Pipelines\GetMasters\AddInsertOptions.cs" />
+    <Compile Include="Pipelines\Taxonomy\GetElementFolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates.cs" />
   </ItemGroup>
