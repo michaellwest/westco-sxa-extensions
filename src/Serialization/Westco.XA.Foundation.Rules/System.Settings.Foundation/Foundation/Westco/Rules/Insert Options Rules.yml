@@ -1,0 +1,58 @@
+﻿---
+ID: "8e41b2d7-22d8-400e-a1ff-d8ec50ffc574"
+Parent: "7bbc0359-99fe-4be8-b0ab-7c9082e66384"
+Template: "664e5035-eb8c-4ba1-9731-a098fcc9127a"
+Path: /sitecore/system/Settings/Rules/Insert Options/Rules/Foundation/Westco/Rules/Insert Options Rules
+DB: master
+SharedFields:
+- ID: "fa307b86-da2a-44bd-887d-e2057cdb4948"
+  Hint: Rule
+  Type: Rules
+  Value: |
+    <ruleset>
+      <rule
+        uid="{E28AF5A8-A675-49F6-A520-CF2891FD0E53}"
+        name="Insert Options Rule">
+        <conditions>
+          <or
+            uid="A516EF5DB3F84E4585D854D7F4CCDA8B">
+            <or
+              uid="91E129861DF64A2A9D3901AF94016A9D">
+              <condition
+                id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+                uid="2E4F0C83753247A4AAFF1572F75A05B4"
+                itemid="{68166075-0BFC-44DE-8C2F-A146F9B02E1D}" />
+              <condition
+                id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+                uid="E6C75047390445CD9864B9D825B062FB"
+                itemid="{585D4945-0F2A-49FF-A06B-672A28D3E1C0}" />
+            </or>
+            <condition
+              id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+              uid="46FCB5FC39CF4B83AB08A2F46C1BD14A"
+              itemid="{3EB07DE4-3630-4076-AC2C-2F81169760EC}" />
+          </or>
+        </conditions>
+        <actions>
+          <action
+            id="{918FFCF0-F9E1-4DB6-A191-3EFA5A91C583}"
+            uid="92B358AEA095483880CA25F47AAD3518"
+            insertoptionid="{664E5035-EB8C-4BA1-9731-A098FCC9127A}" />
+        </actions>
+      </rule>
+    </ruleset>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170621T015708Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "9e0287d9-af90-41ad-8d36-332375e194d6"
+      Hint: Name
+      Value: Insert Options Rule

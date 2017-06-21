@@ -1,0 +1,58 @@
+﻿---
+ID: "e4f6bce3-eddf-4dc5-8b8e-f0345e64a5eb"
+Parent: "7bbc0359-99fe-4be8-b0ab-7c9082e66384"
+Template: "664e5035-eb8c-4ba1-9731-a098fcc9127a"
+Path: /sitecore/system/Settings/Rules/Insert Options/Rules/Foundation/Westco/Rules/Elements Rules
+DB: master
+SharedFields:
+- ID: "fa307b86-da2a-44bd-887d-e2057cdb4948"
+  Hint: Rule
+  Type: Rules
+  Value: |
+    <ruleset>
+      <rule
+        uid="{BC2DF0F4-A063-4A21-A677-82775D99C27E}"
+        name="Elements Rule">
+        <conditions>
+          <or
+            uid="EDA5D7B4D2504997A4C76C5FFF6E1F90">
+            <or
+              uid="7EAA59D5CFD44E5BAF7F09E263657FCB">
+              <condition
+                id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+                uid="817E9628E6C34680BD98AFA6BC68150E"
+                itemid="{50FCEA15-09A7-49E3-A56B-4BB816852E2B}" />
+              <condition
+                id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+                uid="3804B476F9BE40128D757F26BD3F72F1"
+                itemid="{8A4C81CB-F49D-4ABB-8EA5-763A5B8A091C}" />
+            </or>
+            <condition
+              id="{7D5DA661-BEF9-441C-B1F7-D80DE3E0972F}"
+              uid="2D946D0E6E5C45B19FAE5F0880AF0FF8"
+              itemid="{38AC9260-C20F-4A09-9204-2818880EFAFE}" />
+          </or>
+        </conditions>
+        <actions>
+          <action
+            id="{918FFCF0-F9E1-4DB6-A191-3EFA5A91C583}"
+            uid="8715B499DD71431C858DF9140ECBA691"
+            insertoptionid="{54DAE7CD-BFD8-4E69-9679-75F2AE9F9034}" />
+        </actions>
+      </rule>
+    </ruleset>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170621T022503Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "9e0287d9-af90-41ad-8d36-332375e194d6"
+      Hint: Name
+      Value: Elements Rules
