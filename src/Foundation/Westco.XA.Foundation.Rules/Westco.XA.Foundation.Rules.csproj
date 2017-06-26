@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sitecore.Client, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Sitecore.Client.NoReferences.8.2.170407\lib\NET452\Sitecore.Client.dll</HintPath>
       <Private>False</Private>
@@ -72,6 +76,10 @@
     <Compile Include="..\..\Version.cs">
       <Link>Version.cs</Link>
     </Compile>
+    <Compile Include="Conditions\Cookie\CookieExists.cs" />
+    <Compile Include="Conditions\Cookie\CookieKeyValue.cs" />
+    <Compile Include="Conditions\Cookie\CookieNumericValue.cs" />
+    <Compile Include="Conditions\Cookie\CookieStringValue.cs" />
     <Compile Include="Pipelines\GetMasters\AddInsertOptions.cs" />
     <Compile Include="Pipelines\Taxonomy\GetElementFolders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

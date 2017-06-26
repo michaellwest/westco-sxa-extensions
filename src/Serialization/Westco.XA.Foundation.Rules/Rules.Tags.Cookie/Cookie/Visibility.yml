@@ -1,0 +1,23 @@
+﻿---
+ID: "2c29e858-3d94-4060-82e1-1a66cb27e9b3"
+Parent: "b58b08e2-dee1-4cf7-8f92-2c0d58abcc50"
+Template: "aa91a868-02f2-41d3-8b78-1cad91b4dcae"
+Path: /sitecore/system/Settings/Rules/Definitions/Tags/Cookie/Visibility
+DB: master
+BranchID: "60e3e35b-cef9-4afa-9f89-204ed015ccb9"
+SharedFields:
+- ID: "f6d8a61c-2f84-4401-bd24-52d2068172bc"
+  Hint: __Originator
+  Value: "{B1ECD86C-5B13-4698-A27A-CBE89DC12393}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170626T011457Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin

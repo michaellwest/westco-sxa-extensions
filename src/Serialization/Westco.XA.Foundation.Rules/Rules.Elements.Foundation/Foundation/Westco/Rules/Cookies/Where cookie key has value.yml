@@ -1,0 +1,25 @@
+﻿---
+ID: "99ca31bf-995f-4aec-b725-eaee6789ba67"
+Parent: "7f520e72-d009-4ad3-bad8-134cada37dcd"
+Template: "f0d16eee-3a05-4e43-a082-795a32b873c0"
+Path: /sitecore/system/Settings/Rules/Definitions/Elements/Foundation/Westco/Rules/Cookies/Where cookie key has value
+DB: master
+SharedFields:
+- ID: "ab51c8b2-f0e1-4471-9aae-cc080d774923"
+  Hint: Type
+  Value: Westco.XA.Foundation.Rules.Conditions.Cookie.CookieKeyValue, Westco.XA.Foundation.Rules
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170626T021200Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "af321234-4eb9-4ef5-9197-65903351939c"
+      Hint: Text
+      Value: "where the [CookieName,,,specific] cookie has a [CookieKey,,,specific] key and its value [operatorid,StringOperator,,compares to] [CookieValue,,,specific value] "

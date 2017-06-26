@@ -1,0 +1,14 @@
+﻿---
+ID: "30335ed7-4000-4b47-b0d2-0fecba2e5153"
+Parent: "ba4b12ed-74cc-4b96-9a65-9359b95077ab"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/system/Settings/Rules/Definitions/Elements/Foundation/Westco/Rules
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170626T011007Z
