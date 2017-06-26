@@ -107,46 +107,48 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                 assetsList.Add(urlInclude);
 
                 var isFallbackEnabled = MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsFallbackEnabled], false);
-                if (!isFallbackEnabled) continue;
-
                 var fallbackTest = plainIncludeItem[Templates.PlainInclude.Fields.FallbackTest];
-                if (string.IsNullOrEmpty(fallbackTest)) continue;
-
-                var tagBuilder = new StringBuilder();
-                foreach (var script in ProcessAssets(plainIncludeItem, AssetType.Script, assetConfiguration.ScriptsMode))
+                if (isFallbackEnabled && !string.IsNullOrEmpty(fallbackTest))
                 {
-                    tagBuilder.Append(script);
-                }
 
-                foreach (var link in ProcessAssets(plainIncludeItem, AssetType.Style, assetConfiguration.StylesMode))
-                {
-                    tagBuilder.Append(link);
-                }
-
-                if (tagBuilder.Length > 0)
-                {
-                    var fallbackInclude = new PlainInclude
+                    var tagBuilder = new StringBuilder();
+                    foreach (var script in ProcessAssets(plainIncludeItem, AssetType.Script,
+                        assetConfiguration.ScriptsMode))
                     {
-                        SortOrder = num,
-                        Name = plainIncludeItem.Name + "-fallback",
-                        Type = AssetType.Script,
-                        Content = "<script>{0} || document.write('{1}')</script>".FormatWith(fallbackTest, tagBuilder.ToString())
-                    };
-                    assetsList.Add(fallbackInclude);
+                        tagBuilder.Append(script);
+                    }
+
+                    foreach (var link in ProcessAssets(plainIncludeItem, AssetType.Style,
+                        assetConfiguration.StylesMode))
+                    {
+                        tagBuilder.Append(link);
+                    }
+
+                    if (tagBuilder.Length > 0)
+                    {
+                        var fallbackInclude = new PlainInclude
+                        {
+                            SortOrder = num,
+                            Name = plainIncludeItem.Name + "-fallback",
+                            Type = AssetType.Script,
+                            Content = "<script>{0} || document.write('{1}')</script>".FormatWith(fallbackTest,
+                                tagBuilder.ToString())
+                        };
+                        assetsList.Add(fallbackInclude);
+                    }
                 }
 
                 var rawContent = GetRawContent(assetType, plainIncludeItem[Templates.PlainInclude.Fields.RawContent]);
-                if (!string.IsNullOrEmpty(rawContent))
+                if (string.IsNullOrEmpty(rawContent)) continue;
+
+                var rawInclude = new PlainInclude
                 {
-                    var rawInclude = new PlainInclude
-                    {
-                        SortOrder = num,
-                        Name = plainIncludeItem.Name,
-                        Type = assetType,
-                        Content = rawContent
-                    };
-                    assetsList.Add(rawInclude);
-                }
+                    SortOrder = num,
+                    Name = plainIncludeItem.Name,
+                    Type = assetType,
+                    Content = rawContent
+                };
+                assetsList.Add(rawInclude);
             }
         }
 
