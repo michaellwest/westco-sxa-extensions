@@ -47,7 +47,7 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
 
             if (!assetIds.Any()) return;
 
-            var assetsList = args.AssetsList;
+            var assetsList = new List<AssetInclude>();
             const int num = 0;
 
             var plainIncludeItems = contextItem.Axes.SelectItems($"/sitecore/media library//*[@@templateid='{Templates.PlainInclude.Id}']");
@@ -149,6 +149,11 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                     Content = rawContent
                 };
                 assetsList.Add(rawInclude);
+            }
+
+            if (assetsList.Any())
+            {
+                args.AssetsList.InsertRange(0, assetsList.ToArray());
             }
         }
 
