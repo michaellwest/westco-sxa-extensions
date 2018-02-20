@@ -1,0 +1,18 @@
+﻿---
+ID: "8d304541-6f89-45c8-8046-65d50e567c27"
+Parent: "f71c45e3-2919-492f-8514-d1f5dcde98c1"
+Template: "85adbf5b-e836-4932-a333-fe0f9fa1ed1e"
+Path: /sitecore/templates/Branches/Feature/Westco/StaticMaps
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170429T042500Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
