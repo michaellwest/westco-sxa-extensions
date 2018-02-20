@@ -88,16 +88,17 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
 
                 var urlContent = GetUrlContent(assetType, url, joinedAttributes);
 
-                if (string.IsNullOrEmpty(urlContent)) continue;
-
-                var urlInclude = new PlainInclude
+                if (!string.IsNullOrEmpty(urlContent))
                 {
-                    SortOrder = num,
-                    Name = plainIncludeItem.Name,
-                    Type = assetType,
-                    Content = urlContent
-                };
-                assetsList.Add(urlInclude);
+                    var urlInclude = new PlainInclude
+                    {
+                        SortOrder = num,
+                        Name = plainIncludeItem.Name,
+                        Type = assetType,
+                        Content = urlContent
+                    };
+                    assetsList.Add(urlInclude);
+                }
 
                 var isFallbackEnabled =
                     MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsFallbackEnabled], false);
@@ -128,16 +129,17 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                 }
 
                 var rawContent = GetRawContent(assetType, plainIncludeItem[Templates.PlainInclude.Fields.RawContent]);
-                if (string.IsNullOrEmpty(rawContent)) continue;
-
-                var rawInclude = new PlainInclude
+                if (!string.IsNullOrEmpty(rawContent))
                 {
-                    SortOrder = num,
-                    Name = plainIncludeItem.Name,
-                    Type = assetType,
-                    Content = rawContent
-                };
-                assetsList.Add(rawInclude);
+                    var rawInclude = new PlainInclude
+                    {
+                        SortOrder = num,
+                        Name = plainIncludeItem.Name,
+                        Type = assetType,
+                        Content = rawContent
+                    };
+                    assetsList.Add(rawInclude);
+                }
             }
 
             if (assetsList.Any()) args.AssetsList.InsertRange(0, assetsList.ToArray());
