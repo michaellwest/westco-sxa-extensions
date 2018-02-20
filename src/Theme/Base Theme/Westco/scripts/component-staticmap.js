@@ -85,6 +85,7 @@
                 imgUrl += `&key=${key}`;
                 const $img = $('<img>');
                 $img.attr('src', imgUrl);
+                $(that.$el).find('.static-map').empty();
                 $(that.$el).find('.static-map').append($img);
         },
         parseZoom: function (str, defaultValue) {

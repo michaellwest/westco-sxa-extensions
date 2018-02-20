@@ -23,10 +23,10 @@ SharedFields:
     Westco XA Extensions : A module extending SXA.
     
     Before you install the package, please make sure that you have installed:
-      1. Sitecore Experience Platform 8.2 rev. 170407 (8.2 Update-3) or newer.
-      2. Sitecore PowerShell extensions (Full 4.5 for Sitecore 8).
+      1. Sitecore Experience Platform 8.2 rev. 171121 (8.2 Update-6) or newer.
+      2. Sitecore PowerShell extensions (Full 4.7.2 for Sitecore 8).
           a. https://marketplace.sitecore.net/Modules/S/Sitecore_PowerShell_console.aspx
-      3. Sitecore Experience Accelerator 8.2 rev. 170412 (1.3 Initial) or newer.
+      3. Sitecore Experience Accelerator 1.6 rev. 180103 for 8.2 (1.6 Initial) or newer.
     
     Copyright (c) 2017 Michael West
     
@@ -75,15 +75,15 @@ SharedFields:
     $package.Sources.Add($source)
     
     Write-Progress -Activity "Building Package" -Status "Files"
-    $source = Get-Item "$AppPath\App_Config\Include\Website\Westco\*.*" | New-ExplicitFileSource -Name "Website Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Website\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Website Configuration Files"
     $package.Sources.Add($source)
-    $source = Get-Item "$AppPath\App_Config\Include\Foundation\Westco\*.*" | New-ExplicitFileSource -Name "Foundation Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Foundation\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Foundation Configuration Files"
     $package.Sources.Add($source)
-    $source = Get-Item "$AppPath\App_Config\Include\Feature\Westco\*.*" | New-ExplicitFileSource -Name "Feature Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Feature\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Feature Configuration Files"
     $package.Sources.Add($source)
     $source = Get-Item "$AppPath\bin\Westco.XA.*.dll" | New-ExplicitFileSource -Name "Binaries"
     $package.Sources.Add($source)
-    $source = Get-Item "$AppPath\Views\StaticMap\*.*" | New-ExplicitFileSource -Name "StaticMap Views"
+    $source = Get-Item "$AppPath\Views\Westco\*.*" | New-ExplicitFileSource -Name "Westco Views"
     $package.Sources.Add($source)
     
     Write-Progress -Activity "Exporting Package" -Status "Almost complete"

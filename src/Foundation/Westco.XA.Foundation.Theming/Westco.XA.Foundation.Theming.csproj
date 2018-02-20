@@ -40,12 +40,11 @@
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.171121\lib\NET452\Sitecore.Kernel.dll</HintPath>
     </Reference>
+    <Reference Include="Sitecore.XA.Foundation.Caching">
+      <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Caching.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Sitecore.XA.Foundation.IoC">
-      <HintPath>..\..\..\lib\Sitecore.XA.Foundation.IoC.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.Multisite">
@@ -80,6 +79,7 @@
     </Compile>
     <Compile Include="Pipelines\AssetService\AddPlainIncludes.cs" />
     <Compile Include="Pipelines\AssetService\AssetTypeEx.cs" />
+    <Compile Include="Pipelines\IoC\RegisterServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shell\Controls\RichTextEditor\EditorConfiguration.cs" />
     <Compile Include="Templates.cs" />
@@ -93,7 +93,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
-IF EXIST C:\Websites\dev.demo (
+IF EXIST C:\Websites\sc826 (
     xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
     xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826\Website\App_Config\Include\*.* /s /e /c /y
 )</PostBuildEvent>

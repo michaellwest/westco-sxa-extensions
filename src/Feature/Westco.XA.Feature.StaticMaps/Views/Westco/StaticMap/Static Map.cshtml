@@ -13,6 +13,12 @@ else
         <div class="component-content" style="height: 100%; width: 100%">
             @Model.MessageEditHere
             <div id="@Guid.NewGuid().ToString()" class="static-map" style="height: 100%; width: 100%">
+                @if (Sitecore.Context.PageMode.IsExperienceEditorEditing)
+                {
+                    <div class="alert alert-warning" role="alert">
+                        The StaticMap base theme is missing from the site theme.
+                    </div>
+                }
             </div>
         </div>
     </div>

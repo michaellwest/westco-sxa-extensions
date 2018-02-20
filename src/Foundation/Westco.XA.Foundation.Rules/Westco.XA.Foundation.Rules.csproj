@@ -45,10 +45,6 @@
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="Sitecore.XA.Foundation.IoC">
-      <HintPath>..\..\..\lib\Sitecore.XA.Foundation.IoC.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Sitecore.XA.Foundation.Multisite">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Multisite.dll</HintPath>
       <Private>False</Private>
@@ -93,7 +89,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
-IF EXIST C:\Websites\dev.demo (
+IF EXIST C:\Websites\sc826 (
     xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
     xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826\Website\App_Config\Include\*.* /s /e /c /y
 )</PostBuildEvent>

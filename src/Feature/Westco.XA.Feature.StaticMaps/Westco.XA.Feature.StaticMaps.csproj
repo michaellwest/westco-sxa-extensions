@@ -56,7 +56,6 @@
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.IoC">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.IoC.dll</HintPath>
-      <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.MarkupDecorator, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -121,7 +120,7 @@
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Westco\Westco.XA.Feature.StaticMaps.config" />
     <Content Include="App_Config\Include\Feature\Westco\Westco.XA.Feature.StaticMaps.Serialization.config" />
-    <Content Include="Views\StaticMap\Static Map.cshtml" />
+    <Content Include="Views\Westco\StaticMap\Static Map.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj">
@@ -136,7 +135,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
-IF EXIST C:\Websites\dev.demo (
+IF EXIST C:\Websites\sc826 (
     xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
     xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826\Website\App_Config\Include\*.* /s /e /c /y
     xcopy $(ProjectDir)Views\*.* C:\Websites\sc826\Website\Views\*.* /s /e /c /y
