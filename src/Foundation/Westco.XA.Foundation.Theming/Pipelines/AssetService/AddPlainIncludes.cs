@@ -22,7 +22,6 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
         public override void Process(AssetsArgs args)
         {
             if (!IsSxaPage()) return;
-            var assetConfiguration = AssetConfigurationReader.Read();
 
             var contextItem = Context.Item;
             if (contextItem == null) return;
@@ -61,91 +60,107 @@ namespace Westco.XA.Foundation.Theming.Pipelines.AssetService
                 var assetTypeEx = (AssetTypeEx) Enum.Parse(typeof(AssetTypeEx), mode);
                 var assetType = assetTypeEx == AssetTypeEx.Style ? AssetType.Style : AssetType.Script;
 
-                var attributes = new Dictionary<string, string>();
+                AddExternalReference(assetsList, plainIncludeItem, assetTypeEx, assetType, num);
+                AddFallbackContent(assetsList, plainIncludeItem, num);
+                AddRawContent(assetsList, plainIncludeItem, assetType, num);
 
-                if (!plainIncludeItem[Templates.PlainInclude.Fields.SriHash].IsNullOrEmpty())
-                    attributes.Add("integrity", plainIncludeItem[Templates.PlainInclude.Fields.SriHash]);
-
-                if (!plainIncludeItem[Templates.PlainInclude.Fields.Cors].IsNullOrEmpty())
-                    attributes.Add("crossorigin",
-                        GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors]));
-
-                switch (assetTypeEx)
-                {
-                    case AssetTypeEx.ScriptAsync:
-                        attributes.Add("async", "");
-                        break;
-                    case AssetTypeEx.ScriptDefer:
-                        attributes.Add("defer", "");
-                        break;
-                }
-
-                var url = plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl];
-                var joinedAttributes = string.Join(" ",
-                    attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
-                joinedAttributes += string.Join(" ",
-                    attributes.Where(a => a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}"));
-
-                var urlContent = GetUrlContent(assetType, url, joinedAttributes);
-
-                if (!string.IsNullOrEmpty(urlContent))
-                {
-                    var urlInclude = new PlainInclude
-                    {
-                        SortOrder = num,
-                        Name = plainIncludeItem.Name,
-                        Type = assetType,
-                        Content = urlContent
-                    };
-                    assetsList.Add(urlInclude);
-                }
-
-                var isFallbackEnabled =
-                    MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsFallbackEnabled], false);
-                var fallbackTest = plainIncludeItem[Templates.PlainInclude.Fields.FallbackTest];
-                if (isFallbackEnabled && !string.IsNullOrEmpty(fallbackTest))
-                {
-                    var tagBuilder = new StringBuilder();
-                    foreach (var script in ProcessAssets(plainIncludeItem, AssetType.Script,
-                        assetConfiguration.ScriptsMode))
-                        tagBuilder.Append(script);
-
-                    foreach (var link in ProcessAssets(plainIncludeItem, AssetType.Style,
-                        assetConfiguration.StylesMode))
-                        tagBuilder.Append(link);
-
-                    if (tagBuilder.Length > 0)
-                    {
-                        var fallbackInclude = new PlainInclude
-                        {
-                            SortOrder = num,
-                            Name = plainIncludeItem.Name + "-fallback",
-                            Type = AssetType.Script,
-                            Content = "<script>{0} || document.write('{1}')</script>".FormatWith(fallbackTest,
-                                tagBuilder.ToString())
-                        };
-                        assetsList.Add(fallbackInclude);
-                    }
-                }
-
-                var rawContent = GetRawContent(assetType, plainIncludeItem[Templates.PlainInclude.Fields.RawContent]);
-                if (!string.IsNullOrEmpty(rawContent))
-                {
-                    var rawInclude = new PlainInclude
-                    {
-                        SortOrder = num,
-                        Name = plainIncludeItem.Name,
-                        Type = assetType,
-                        Content = rawContent
-                    };
-                    assetsList.Add(rawInclude);
-                }
             }
 
             if (assetsList.Any()) args.AssetsList.InsertRange(0, assetsList.ToArray());
         }
 
-        private IEnumerable<string> ProcessAssets(Item plainIncludeItem, AssetType assetType,
+        private static void AddExternalReference(List<AssetInclude> assetsList, Item plainIncludeItem, AssetTypeEx assetTypeEx, AssetType assetType, int sortOrder)
+        {
+            var attributes = new Dictionary<string, string>();
+
+            if (!plainIncludeItem[Templates.PlainInclude.Fields.SriHash].IsNullOrEmpty())
+                attributes.Add("integrity", plainIncludeItem[Templates.PlainInclude.Fields.SriHash]);
+
+            if (!plainIncludeItem[Templates.PlainInclude.Fields.Cors].IsNullOrEmpty())
+                attributes.Add("crossorigin",
+                    GetEnumFieldValue(plainIncludeItem.Fields[Templates.PlainInclude.Fields.Cors]));
+
+            switch (assetTypeEx)
+            {
+                case AssetTypeEx.ScriptAsync:
+                    attributes.Add("async", "");
+                    break;
+                case AssetTypeEx.ScriptDefer:
+                    attributes.Add("defer", "");
+                    break;
+            }
+
+            var url = plainIncludeItem[Templates.PlainInclude.Fields.AssetUrl];
+            var joinedAttributes = string.Join(" ",
+                attributes.Where(a => !a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}=\"{a.Value}\""));
+            joinedAttributes += string.Join(" ",
+                attributes.Where(a => a.Value.IsNullOrEmpty()).Select(a => $"{a.Key}"));
+
+            var urlContent = GetUrlContent(assetType, url, joinedAttributes);
+
+            if (!string.IsNullOrEmpty(urlContent))
+            {
+                var urlInclude = new PlainInclude
+                {
+                    SortOrder = sortOrder,
+                    Name = plainIncludeItem.Name,
+                    Type = assetType,
+                    Content = urlContent
+                };
+                assetsList.Add(urlInclude);
+            }
+        }
+
+        private static void AddFallbackContent(List<AssetInclude> assetsList, Item plainIncludeItem, int sortOrder)
+        {
+            var assetConfiguration = AssetConfigurationReader.Read();
+
+            var isFallbackEnabled =
+                MainUtil.GetBool(plainIncludeItem[Templates.PlainInclude.Fields.IsFallbackEnabled], false);
+            var fallbackTest = plainIncludeItem[Templates.PlainInclude.Fields.FallbackTest];
+            if (isFallbackEnabled && !string.IsNullOrEmpty(fallbackTest))
+            {
+                var tagBuilder = new StringBuilder();
+                foreach (var script in ProcessAssets(plainIncludeItem, AssetType.Script,
+                    assetConfiguration.ScriptsMode))
+                    tagBuilder.Append(script);
+
+                foreach (var link in ProcessAssets(plainIncludeItem, AssetType.Style,
+                    assetConfiguration.StylesMode))
+                    tagBuilder.Append(link);
+
+                if (tagBuilder.Length > 0)
+                {
+                    var fallbackInclude = new PlainInclude
+                    {
+                        SortOrder = sortOrder,
+                        Name = plainIncludeItem.Name + "-fallback",
+                        Type = AssetType.Script,
+                        Content = "<script>{0} || document.write('{1}')</script>".FormatWith(fallbackTest,
+                            tagBuilder.ToString())
+                    };
+                    assetsList.Add(fallbackInclude);
+                }
+            }
+        }
+
+        private static void AddRawContent(List<AssetInclude> assetsList, Item plainIncludeItem, AssetType assetType, int sortOrder)
+        {
+            var rawContent = GetRawContent(assetType, plainIncludeItem[Templates.PlainInclude.Fields.RawContent]);
+            if (!string.IsNullOrEmpty(rawContent))
+            {
+                var rawInclude = new PlainInclude
+                {
+                    SortOrder = sortOrder,
+                    Name = plainIncludeItem.Name,
+                    Type = assetType,
+                    Content = rawContent
+                };
+                assetsList.Add(rawInclude);
+            }
+        }
+
+        private static IEnumerable<string> ProcessAssets(Item plainIncludeItem, AssetType assetType,
             AssetServiceMode serviceMode)
         {
             Item[] selectedItems = null;
