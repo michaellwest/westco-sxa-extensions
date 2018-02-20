@@ -75,11 +75,11 @@ SharedFields:
     $package.Sources.Add($source)
     
     Write-Progress -Activity "Building Package" -Status "Files"
-    $source = Get-Item "$AppPath\App_Config\Include\Website\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Website Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Website\Westco\*.*" -Exclude "*Serialization*" | New-ExplicitFileSource -Name "Website Configuration Files"
     $package.Sources.Add($source)
-    $source = Get-Item "$AppPath\App_Config\Include\Foundation\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Foundation Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Foundation\Westco\*.*" -Exclude "*Serialization*" | New-ExplicitFileSource -Name "Foundation Configuration Files"
     $package.Sources.Add($source)
-    $source = Get-Item "$AppPath\App_Config\Include\Feature\Westco\*.*" -Exclude "*Serialization" | New-ExplicitFileSource -Name "Feature Configuration Files"
+    $source = Get-Item "$AppPath\App_Config\Include\Feature\Westco\*.*" -Exclude "*Serialization*" | New-ExplicitFileSource -Name "Feature Configuration Files"
     $package.Sources.Add($source)
     $source = Get-Item "$AppPath\bin\Westco.XA.*.dll" | New-ExplicitFileSource -Name "Binaries"
     $package.Sources.Add($source)
