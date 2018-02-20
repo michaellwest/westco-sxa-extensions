@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Westco.XA.Foundation.Rules</RootNamespace>
     <AssemblyName>Westco.XA.Foundation.Rules</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,16 +32,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Sitecore.Client, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Sitecore.Client.NoReferences.8.2.170407\lib\NET452\Sitecore.Client.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\..\..\packages\Sitecore.Client.NoReferences.8.2.171121\lib\NET452\Sitecore.Client.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.170407\lib\NET452\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.171121\lib\NET452\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
@@ -95,8 +94,8 @@
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
 IF EXIST C:\Websites\dev.demo (
-    xcopy $(TargetDir)Westco.XA*.* C:\Websites\dev.demo\Website\bin\*.* /s /e /c /y
-    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\dev.demo\Website\App_Config\Include\*.* /s /e /c /y
+    xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
+    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826\Website\App_Config\Include\*.* /s /e /c /y
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

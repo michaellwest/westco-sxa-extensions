@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Westco.XA.Foundation.Geospatial</RootNamespace>
     <AssemblyName>Westco.XA.Foundation.Geospatial</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.170407\lib\NET452\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.171121\lib\NET452\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
@@ -68,15 +68,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Foundation\Westco\Westco.XA.Foundation.Geospatial.Serialization.config" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
 IF EXIST C:\Websites\dev.demo (
-    xcopy $(TargetDir)Westco.XA*.* C:\Websites\dev.demo\Website\bin\*.* /s /e /c /y
-    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\dev.demo\Website\App_Config\Include\*.* /s /e /c /y
+    xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
+    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826s\Website\App_Config\Include\*.* /s /e /c /y
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

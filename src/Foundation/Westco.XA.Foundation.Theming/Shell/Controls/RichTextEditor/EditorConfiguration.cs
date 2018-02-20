@@ -1,11 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Extensions.DependencyInjection;
+using Sitecore;
 using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
+using Sitecore.DependencyInjection;
 using Sitecore.Web;
-using Sitecore.XA.Foundation.IoC;
 using Sitecore.XA.Foundation.Multisite;
 using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
 
@@ -21,7 +24,7 @@ namespace Westco.XA.Foundation.Theming.Shell.Controls.RichTextEditor
 
         protected override void SetupStylesheets()
         {
-            var contentDatabase = Sitecore.Context.ContentDatabase;
+            var contentDatabase = Context.ContentDatabase;
 
             if (contentDatabase == null || !contentDatabase.Name.Equals("master", StringComparison.OrdinalIgnoreCase))
             {
@@ -43,7 +46,8 @@ namespace Westco.XA.Foundation.Theming.Shell.Controls.RichTextEditor
                 return;
             }
 
-            var settingsItem = ServiceLocator.Current.Resolve<IMultisiteContext>().GetSettingsItem(contentItem);
+            var settingsItem = ServiceLocator.ServiceProvider.GetService<IMultisiteContext>()
+                .GetSettingsItem(contentItem);
             if (settingsItem == null)
             {
                 base.SetupStylesheets();
@@ -67,9 +71,9 @@ namespace Westco.XA.Foundation.Theming.Shell.Controls.RichTextEditor
                     if (item == null || !item.Paths.IsMediaItem) continue;
 
                     var url = item.BuildAssetPath(true);
-                    this.Editor.CssFiles.Add(url);
+                    Editor.CssFiles.Add(url);
 
-                    using (var reader = new System.IO.StreamReader(((MediaItem)item).GetMediaStream()))
+                    using (var reader = new StreamReader(((MediaItem) item).GetMediaStream()))
                     {
                         var text = reader.ReadToEnd();
                         var matches = Regex.Matches(text, pattern);
@@ -77,7 +81,7 @@ namespace Westco.XA.Foundation.Theming.Shell.Controls.RichTextEditor
                         {
                             if (!match.Success) continue;
                             var name = $"{match.Groups["prefix"].Value}{match.Groups["name"].Value}";
-                            base.Editor.CssClasses.Add(name, name);
+                            Editor.CssClasses.Add(name, name);
                         }
                     }
                 }

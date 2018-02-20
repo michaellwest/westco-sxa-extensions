@@ -1,5 +1,5 @@
 packages/
-src/.vs/config/
-src/**/obj/
-src/**/bin/
-src/Serialization/**/optimized*\.yml
+.vs/
+obj/
+bin/
+optimized*\.yml

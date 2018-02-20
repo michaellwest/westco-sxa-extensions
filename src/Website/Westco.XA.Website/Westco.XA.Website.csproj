@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Westco.XA.Website</RootNamespace>
     <AssemblyName>Westco.XA.Website</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,27 +32,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Configy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Configy.1.0.0\lib\net45\Configy.dll</HintPath>
+      <HintPath>..\..\..\packages\Configy.1.0.0\lib\net45\Configy.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Kamsar.WebConsole, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Kamsar.WebConsole.2.0.0\lib\net40\Kamsar.WebConsole.dll</HintPath>
+      <HintPath>..\..\..\packages\Kamsar.WebConsole.2.0.0\lib\net40\Kamsar.WebConsole.dll</HintPath>
     </Reference>
     <Reference Include="MicroCHAP, Version=1.2.2.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\MicroCHAP.1.2.2.2\lib\net45\MicroCHAP.dll</HintPath>
     </Reference>
     <Reference Include="Rainbow, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rainbow.Core.2.0.0\lib\net452\Rainbow.dll</HintPath>
+      <HintPath>..\..\..\packages\Rainbow.Core.2.0.0\lib\net452\Rainbow.dll</HintPath>
     </Reference>
     <Reference Include="Rainbow.Storage.Sc, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rainbow.Storage.Sc.2.0.0\lib\net452\Rainbow.Storage.Sc.dll</HintPath>
+      <HintPath>..\..\..\packages\Rainbow.Storage.Sc.2.0.0\lib\net452\Rainbow.Storage.Sc.dll</HintPath>
     </Reference>
     <Reference Include="Rainbow.Storage.Yaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rainbow.Storage.Yaml.2.0.0\lib\net452\Rainbow.Storage.Yaml.dll</HintPath>
+      <HintPath>..\..\..\packages\Rainbow.Storage.Yaml.2.0.0\lib\net452\Rainbow.Storage.Yaml.dll</HintPath>
     </Reference>
-    <Reference Include="Sitecore.Kernel">
-      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.170407\lib\NET452\Sitecore.Kernel.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Sitecore.Kernel.NoReferences.8.2.171121\lib\NET452\Sitecore.Kernel.dll</HintPath>
     </Reference>
     <Reference Include="Sitecore.XA.Foundation.Common">
       <HintPath>..\..\..\lib\Sitecore.XA.Foundation.Common.dll</HintPath>
@@ -81,8 +81,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unicorn, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Unicorn.Core.4.0.0\lib\net452\Unicorn.dll</HintPath>
+    <Reference Include="Unicorn, Version=4.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Unicorn.Core.4.0.3\lib\net452\Unicorn.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +108,7 @@
     <None Include="App_Config\Include\Unicorn\Unicorn.Remote.config.disabled" />
     <None Include="App_Config\Include\Unicorn\Unicorn.UI.config" />
     <None Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
+    <Content Include="App_Config\Include\Website\Westco\Westco.XA.Website.Serialization.All.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
@@ -115,8 +116,8 @@
   <PropertyGroup>
     <PostBuildEvent>echo "Copy build for Mikey"
 IF EXIST C:\Websites\dev.demo (
-    xcopy $(TargetDir)Westco.XA*.* C:\Websites\dev.demo\Website\bin\*.* /s /e /c /y
-    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\dev.demo\Website\App_Config\Include\*.* /s /e /c /y
+    xcopy $(TargetDir)Westco.XA*.* C:\Websites\sc826\Website\bin\*.* /s /e /c /y
+    xcopy $(ProjectDir)App_Config\Include\*.* C:\Websites\sc826\Website\App_Config\Include\*.* /s /e /c /y
 )</PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,14 +1,14 @@
-﻿using Sitecore;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Web.Script.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 using Sitecore.Data;
 using Sitecore.Data.Items;
 using Sitecore.Data.Managers;
-using Sitecore.XA.Foundation.IoC;
+using Sitecore.DependencyInjection;
 using Sitecore.XA.Foundation.Multisite;
 using Sitecore.XA.Foundation.Mvc.Repositories.Base;
 using Sitecore.XA.Foundation.SitecoreExtensions.Extensions;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Script.Serialization;
 using Westco.XA.Feature.StaticMaps.Models;
 using Templates = Westco.XA.Feature.Maps.Templates;
 
@@ -60,10 +60,11 @@ namespace Westco.XA.Feature.StaticMaps.Repositories
 
         public virtual string GetMapsProviderKey(Item contextItem)
         {
-            if (ServiceLocator.Current.Resolve<IMultisiteContext>().GetSiteItem(contextItem) == null)
+            if (ServiceLocator.ServiceProvider.GetService<IMultisiteContext>().GetSiteItem(contextItem) == null)
                 return string.Empty;
 
-            var providerSettings = ServiceLocator.Current.Resolve<IMultisiteContext>().GetSettingsItem(contextItem)
+            var providerSettings = ServiceLocator.ServiceProvider.GetService<IMultisiteContext>()
+                .GetSettingsItem(contextItem)
                 .Children.FirstOrDefault(i => TemplateManager.GetTemplate(i)
                     .InheritsFrom(Foundation.Geospatial.Templates.StaticMapsProvider.Id));
             return providerSettings != null

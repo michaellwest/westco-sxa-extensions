@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Theming", "Foundation\Westco.XA.Foundation.Theming\Westco.XA.Foundation.Theming.csproj", "{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Theming", "src\Foundation\Westco.XA.Foundation.Theming\Westco.XA.Foundation.Theming.csproj", "{71AF857F-1BBC-4EE5-8F41-E7A98E3661DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Website", "Website\Westco.XA.Website\Westco.XA.Website.csproj", "{66A89989-DDA3-4641-B0F0-6E344265E05C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Website", "src\Website\Westco.XA.Website\Westco.XA.Website.csproj", "{66A89989-DDA3-4641-B0F0-6E344265E05C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}"
 EndProject
@@ -13,16 +13,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{2748
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Feature", "Feature", "{8B39AA37-63A4-4621-AFCB-2DAA96172CA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.StaticMaps", "Feature\Westco.XA.Feature.StaticMaps\Westco.XA.Feature.StaticMaps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Feature.StaticMaps", "src\Feature\Westco.XA.Feature.StaticMaps\Westco.XA.Feature.StaticMaps.csproj", "{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Geospatial", "Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj", "{F60B8F92-25EF-47A3-84F4-378FFE288F5E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Geospatial", "src\Foundation\Westco.XA.Foundation.Geospatial\Westco.XA.Foundation.Geospatial.csproj", "{F60B8F92-25EF-47A3-84F4-378FFE288F5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{F4C54EE0-BA3B-487E-AD79-19AA9E9CE335}"
 	ProjectSection(SolutionItems) = preProject
-		Version.cs = Version.cs
+		src\Version.cs = src\Version.cs
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Rules", "Foundation\Westco.XA.Foundation.Rules\Westco.XA.Foundation.Rules.csproj", "{6F59BE0B-D171-46A9-A174-C49D4D095833}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Westco.XA.Foundation.Rules", "src\Foundation\Westco.XA.Foundation.Rules\Westco.XA.Foundation.Rules.csproj", "{6F59BE0B-D171-46A9-A174-C49D4D095833}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -60,5 +60,8 @@ Global
 		{707F5D90-6289-41C7-A5D2-D1BAFAD4EC75} = {8B39AA37-63A4-4621-AFCB-2DAA96172CA0}
 		{F60B8F92-25EF-47A3-84F4-378FFE288F5E} = {6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}
 		{6F59BE0B-D171-46A9-A174-C49D4D095833} = {6348B5C7-2A2C-40F5-BE9F-1E08B5F9C800}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CA747FA3-C722-4680-84F0-E3754E4BE116}
 	EndGlobalSection
 EndGlobal
