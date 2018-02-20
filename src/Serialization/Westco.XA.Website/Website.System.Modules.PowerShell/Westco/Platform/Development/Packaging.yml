@@ -24,11 +24,11 @@ SharedFields:
     
     Before you install the package, please make sure that you have installed:
       1. Sitecore Experience Platform 8.2 rev. 171121 (8.2 Update-6) or newer.
-      2. Sitecore PowerShell extensions (Full 4.7.2 for Sitecore 8).
+      2. Sitecore PowerShell extensions (Full 4.7.2 for Sitecore 8) or newer.
           a. https://marketplace.sitecore.net/Modules/S/Sitecore_PowerShell_console.aspx
       3. Sitecore Experience Accelerator 1.6 rev. 180103 for 8.2 (1.6 Initial) or newer.
     
-    Copyright (c) 2017 Michael West
+    Copyright (c) 2017-2018 Michael West
     
     http://michaellwest.blogspot.com/
     "@
