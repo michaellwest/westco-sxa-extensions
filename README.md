@@ -1,46 +1,53 @@
 # Westco SXA Extensions
+
 **Westco SXA Extensions** is a set of extensions for **Sitecore Experience Accelerator** module.
 
-Solution uses [Helix](http://helix.sitecore.net/)
+Solution follows [Helix](http://helix.sitecore.net/).
 
 Current **Westco SXA Extensions** project is compatible with:
 
 | Product   |      Version      |  Revision |
 |----------|:-------------:|:------:|
-| Sitecore |  **8.2** | rev. 170407 |
-| SXA  |  **1.3** | rev. 170412 |
+| Sitecore |  **8.2** | rev. 171121 |
+| SXA  |  **1.6** | rev. 180103 |
 
 [![License](https://img.shields.io/badge/license-MIT%20License-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 ## Setup
 
-Getting started is fairly straightforward.
+Getting started is fairly straightforward. Install the package.
 
-Create a new tenant and ensure that the _Asset Include_ feature is enabled.
+---
 
-![Imgur](http://i.imgur.com/HS975qI.png)
+## Asset Include
 
-Create a new site and ensure that the _Geospatial_ and _Maps_ features are enabled. These two are similar to those OOTB with SXA but offer a Static Maps component.
+Create a new tenant and ensure that the _Westco Theming_ feature is enabled.
 
-![Imgur](http://i.imgur.com/eRwHQDd.png)
+![Imgur](https://i.imgur.com/cyOjzyk.png)
 
-## Assets served by a CDN with local fallback
+Create a new site and ensure that the _Westco Geospatial_ and _Westco Maps_ features are enabled. These two are similar to those OOTB with SXA but offer a Static Maps component.
+
+![Imgur](https://i.imgur.com/deW28II.png)
+
+### Assets served by a CDN with local fallback
 
 In the _Media Library_ you simply create new **Assets** to represent your JavaScript and CSS resources from a CDN.
 
-![Imgur](http://i.imgur.com/RyjOryS.png)
+![Imgur](https://i.imgur.com/QAvZ7nz.png)
+
+**Note:** The Url, SRI, and CORS values are all made available by the CDN.
 
 You can associate assets at a site level by specifying on the **Settings** item in the **Asset Configuration** section.
 
-![Imgur](http://i.imgur.com/bHCxUcC.png)
+![Imgur](https://i.imgur.com/ZJpBR9Y.png)
 
 You can associate assets on a page level by specifying in the **Asset Configuration** section.
 
-![Imgur](http://i.imgur.com/JLtUWlB.png)
+![Imgur](https://i.imgur.com/0W3jdoi.png)
 
 Finally, see that the Html is injected in the `<head>` and `<body>`.
 
-![Imgur](http://i.imgur.com/xNO4dy2.png)
+![Imgur](https://i.imgur.com/xNO4dy2.png)
 
 The final Html output may look like the following:
 
@@ -59,13 +66,13 @@ The configured mode determines the type of html to generate.
 - Script : Asset and raw content rendered using `<script>`.
 - ScriptAsync : Same as **Script** plus the `async` attribute.
 - ScriptDefer : Same as **Script** the `defer` attribute.
-- Style : Asset and raw content rednered using `<style>` and `<link>`.
+- Style : Asset and raw content rendered using `<style>` and `<link>`.
 
 ### Url and SRI
 
 The details needed for specifying the Url and SRI can be found on [cdnjs.com](https://cdnjs.com/libraries/jquery)
 
-![Imgur](http://i.imgur.com/9AepjZa.png)
+![Imgur](https://i.imgur.com/9AepjZa.png)
 
 ---
 
