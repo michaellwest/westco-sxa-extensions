@@ -12,6 +12,10 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20170614T003852Z
+    - ID: "26f1dd9d-104f-4597-ac5a-ea5346c1372d"
+      Hint: RawContent
+      Value: |
+        console.log("Run after CDN link and fallback test.");
     - ID: "33e4c4ee-ca6b-4d32-8476-2769e0d98925"
       Hint: Mode
       Value: "{A73D6FB5-96AE-4A48-92A6-D2929A2C639C}"
